@@ -2,8 +2,14 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;	
+use App\User;
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\EditUserRequest;	
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 
 class UserController extends Controller {
@@ -34,7 +40,7 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request)
+	public function store(CreateUserRequest $request)
 	{
 		$user = new User($request->all());
 		$user->save();
@@ -59,7 +65,8 @@ class UserController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$user = User::findOrFail($id);
+		return view('admin.usuarios.edit',compact('user'));
 	}
 
 	/**
@@ -68,9 +75,12 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(EditUserRequest $request,$id)
 	{
-		//
+		$user = User::findOrFail($id);
+		$user->fill($request->all());
+		$user->save();
+		return redirect()->back();
 	}
 
 	/**
