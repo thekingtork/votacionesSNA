@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -20,3 +19,9 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::group(['prefix' => 'administrador', 'namespace' => 'Admin'], function () {
+
+    Route::resource('users', 'UserController');
+
+});

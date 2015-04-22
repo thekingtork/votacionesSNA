@@ -20,7 +20,7 @@ class TipoUsuariosTableSeeder extends Seeder {
         ));
 
         \DB::table('users')->insert(array(
-            'tipo_usuarios_id'=> $id,
+            'tipo_usuario_id'=> $id,
             'primer_nombre' => 'Victor',
             'segundo_nombre' => 'Eliecer',
             'primer_apellido' => 'Puello',

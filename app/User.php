@@ -12,7 +12,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	/**
 	 * The database table used by the model.
-	 *
+	 *ssss
 	 * @var string
 	 */
 	protected $table = 'users';
@@ -22,7 +22,8 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password'];
+
+	protected $fillable = ['primer_nombre', 'segundo_nombre', 'primer_apellido','segundo_apellido','telefono','email','password','tipo_usuario_id'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -31,4 +32,20 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+	public function tipoUsuario ()
+	{
+		return $this->belongsTo('App\TipoUsuario');
+	}
+
+	public function getFullName()
+	{
+		return $this->primer_nombre . ' ' . $this->primer_apellido;
+	}
+	public function setPasswordAttribute($value)
+    {
+        if ( ! empty ($value))
+        {
+            $this->attributes['password'] = bcrypt($value);
+        }
+    }
 }

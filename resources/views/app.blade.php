@@ -1,62 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Votaciones 2015</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+    <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <link rel="shortcut icon" href="img/favicon.png">
 
-	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    <title>Votaciones SNAC</title>
 
-	<!-- Fonts -->
-	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-</head>
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/bootstrap-reset.css') }}" rel="stylesheet">
+    <!--external css-->
+    <link href="{{ asset('/assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
+    @yield('estilos')
+    
+     <!-- Custom styles for this template -->
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/style-responsive.css') }}" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+      <script src="{{ asset('/js/html5shiv.js') }}"></script>
+      <script src="{{ asset('/js/respond.min.js') }}"></script>
+    <![endif]-->
+  </head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle Navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Laravel</a>
-			</div>
+ <section id="container" >
+      <!--header start-->
+      <header class="header white-bg">
+              <div class="sidebar-toggle-box">
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+              </div>
+            <!--logo start-->
+            <a href="{{ url('/') }}" class="logo">Votaciones<span> SNAC</span></a>
+            <!--logo end-->
+            <div class="top-nav ">
+                <!--search & user info start-->
+                <ul class="nav pull-right top-menu">
+                    <li>
+                        <input type="text" class="form-control search" placeholder="Buscar">
+                    </li>
+                    <!-- user login dropdown start-->
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <img alt="" src="{{ asset('/img/avatar1_small.jpg') }}">
+                            <span class="username">{{Auth::user()->getFullName()}}</span>
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu extended logout">
+                            <div class="log-arrow-up"></div>
+                            <li><a href="#"><i class=" fa fa-suitcase"></i>Perfil</a></li>
+                            <li><a href="#"><i class="fa fa-cog"></i>Config</a></li>
+                            <li><a href="#"><i class="fa fa-bell-o"></i>Notificaciones</a></li>
+                            <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-key"></i> Salir</a></li>
+                        </ul>
+                    </li>
+                    <!-- user login dropdown end -->
+                </ul>
+                <!--search & user info end-->
+            </div>
+        </header>
+      <!--header end-->
+      <!--sidebar start-->
+      <aside>
+          <div id="sidebar"  class="nav-collapse ">
+              <!-- sidebar menu start-->
+              <ul class="sidebar-menu" id="nav-accordion">
+                @yield('menuLateral')
+                                    
+              </ul>
+              <!-- sidebar menu end-->
+          </div>
+      </aside>
+      <!--sidebar end-->
+      <section id="main-content">
+      		@yield('content')
+      </section>
+      <!--footer start-->
+      <footer class="site-footer">
+          <div class="text-center">
+              2015 &copy; Votaciones by Victor.Puello.
+              <a href="#" class="go-top">
+                  <i class="fa fa-angle-up"></i>
+              </a>
+          </div>
+      </footer>
+      <!--footer end-->
+  </section>
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Home</a></li>
-				</ul>
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="{{ asset('/js/jquery.js') }}"></script>
+    <script src="{{ asset('/js/jquery-1.8.3.min.js') }}"></script>
+    <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+    <script class="include" type="text/javascript" src="{{ asset('/js/jquery.dcjqaccordion.2.7.js') }}"></script>
+    <script src="{{ asset('/js/jquery.scrollTo.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/js/jquery.sparkline.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js') }}"></script>
+    <script src="{{ asset('/js/owl.carousel.js') }}" ></script>
+    <script src="{{ asset('/js/jquery.customSelect.min.js') }}" ></script>
+    <script src="{{ asset('/js/respond.min.js') }}" ></script>
 
-				<ul class="nav navbar-nav navbar-right">
-					@if (Auth::guest())
-						<li><a href="{{ url('/auth/login') }}">Login</a></li>
-						<li><a href="{{ url('/auth/register') }}">Register</a></li>
-					@else
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
-							</ul>
-						</li>
-					@endif
-				</ul>
-			</div>
-		</div>
-	</nav>
+    <!--common script for all pages-->
+    <script src="{{ asset('/js/common-scripts.js') }}"></script>
 
-	@yield('content')
-
-	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <!--script for this page-->
+    @yield('script')
+    
 </body>
 </html>
