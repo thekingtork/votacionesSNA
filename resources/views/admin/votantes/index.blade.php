@@ -1,6 +1,5 @@
 @extends('app')
 @section('estilos')
-   <link href="{{ asset('/assets/font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
    <link rel="stylesheet" href="{{ asset('/assets/data-tables/DT_bootstrap.css') }}" />
 @endsection
 @section('menuLateral')
