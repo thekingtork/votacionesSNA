@@ -30,7 +30,7 @@ class TipoUsuariosTableSeeder extends Seeder {
             'password'=> \Hash::make('tork2010'),
         ));
 
-        $faker = Faker::create();
+        /*$faker = Faker::create();
         for ( $i = 0; $i < 30; $i++ ) {
            $identif = \DB::table('puestos_votacion')->insertGetId(array(
                 'nombre'=> $faker->unique()->company,
@@ -63,6 +63,6 @@ class TipoUsuariosTableSeeder extends Seeder {
                     'puestos_votacion_id' => $identif,
                 ));
             }
-        }
+        }*/
     }
 }

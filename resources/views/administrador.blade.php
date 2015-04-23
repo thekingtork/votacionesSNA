@@ -4,9 +4,6 @@
 @endsection
 @section('content')
 <section class="wrapper">
-	<div class="row">
-		<h2>Bienvenido Administrador</h2>
-	</div>
     <div class="row state-overview">
         <div class="col-lg-3 col-sm-6">
             <a href="{{ url('/administrador/users') }}">
@@ -15,7 +12,7 @@
                         <i class="fa fa-user"></i>
                     </div>
                     <div class="value">
-                        <h1 class="">{{ $usuarios }}</h1>
+                        <h1 class="count2"></h1>
                         <p>Usuarios</p>
                     </div>
                 </section>
@@ -28,7 +25,7 @@
                         <i class="fa fa-male"></i>
                     </div>
                     <div class="value">
-                        <h1 class="">{{ $lideres }}</h1>
+                        <h1 class="count"></h1>
                         <p>Lideres</p>
                     </div>
                 </section>
@@ -41,7 +38,7 @@
                         <i class="fa fa-users"></i>
                     </div>
                     <div class="value">
-                        <h1 class="">{{ $votantes }}</h1>
+                        <h1 class="count3"></h1>
                         <p>Votantes</p>
                     </div>
                 </section>
@@ -54,7 +51,7 @@
                         <i class="fa fa-laptop"></i>
                     </div>
                     <div class="value">
-                        <h1 class="">{{ $puestos }}</h1>
+                        <h1 class="count4"></h1>
                         <p>Puestos de votacion</p>
                     </div>
                 </section>
@@ -81,5 +78,9 @@
       $(function(){
           $('select.styled').customSelect();
       });
+      countUp({{ $lideres }},".count");
+      countUp({{ $usuarios }},".count2");
+      countUp({{ $votantes }},".count3");
+      countUp({{ $votantes }},".count4");
   </script>
 @endsection
