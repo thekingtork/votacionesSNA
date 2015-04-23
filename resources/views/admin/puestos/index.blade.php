@@ -11,13 +11,13 @@
               <!-- page start-->
               <section class="panel">
                   <header class="panel-heading">
-                      Listado de usuarios
+                      Listado de puestos
                   </header>
                   <div class="panel-body">
                       <div class="adv-table editable-table ">
                           <div class="clearfix">
                               <div class="btn-group">
-                                  <a href="{{ url('/administrador/users/create') }}" class="btn btn-primary" type="button">
+                                  <a href="{{ url('/administrador/puestos/create') }}" class="btn btn-primary" type="button">
                                       Agregar <i class="fa fa-plus"></i>
                                   </a>
                               </div>
@@ -35,10 +35,8 @@
                           <table class="table table-striped table-hover table-bordered" id="editable-sample">
                               <thead>
                               <tr>
-                                  <th>Correo de Acceso</th>
-                                  <th>Nombre</th>
-                                  <th>Tipo de Usuario</th>
-                                  <th>Telefono</th>
+                                  <th>nombre</th>
+                                  <th>numero de mesas</th>
                                   <th>Editar</th>
                                   <th>Eliminar</th>
                               </tr>
@@ -46,12 +44,10 @@
                               <tbody>
                               	@foreach ($datos as $dato)
 	                              <tr class="">
-	                                  <td>{{ $dato->email }}</td>
-	                                  <td>{{ $dato->getFullName()}}</td>
-	                                  <td>{{ $dato->tipoUsuario->perfil }}</td>
-	                                  <td>{{ $dato->telefono }}</td>
-	                                  <td><a href="{{ route('administrador.users.edit',$dato->id )}}">Editar</a></td>
-	                                  <td><a class="delete" href="javascript:;">Eliminar</a></td>
+                                    <td>{{ $dato->nombre }}</td>
+	                                  <td>{{ $dato->numero_de_mesa }}</td>
+	                                  <td><a href="{{ route('administrador.puestos.edit',$dato->id )}}">Editar</a></td>
+	                                  <td><button class="btn btn-danger deleted"  data-url="{{ route('administrador.puestos.destroy', $dato->id ) }}">Eliminar</button></td>
 	                              </tr>
                               	@endforeach
                               </tbody>
@@ -62,6 +58,25 @@
               <!-- page end-->
           </section>
 </section>
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Modal Tittle</h4>
+                </div>
+                <div class="modal-body">
+                  ¿Seguro que desea eliminar?
+                </div>
+                <div class="modal-footer">
+                    <button data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
+                    {!! Form::open(['method' => 'DELETE', 'id' => "form-delete" ]) !!}
+                       <button type="submit" class="btn btn-warning">Confirmar</button>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+</div>
 @endsection
 @section('script')
 <script type="text/javascript" src="{{ url('/assets/data-tables/jquery.dataTables.js') }}"></script>
@@ -72,5 +87,12 @@
           jQuery(document).ready(function() {
               EditableTable.init();
           });
+          
+      </script>
+      <script type="text/javascript">
+            $(".deleted").click(function (e) {
+                $("#form-delete").attr('action', $(this).data('url') );
+                $("#myModal2").modal('show');
+            });
       </script>
 @endsection

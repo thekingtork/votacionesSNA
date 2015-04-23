@@ -23,5 +23,8 @@ Route::controllers([
 Route::group(['prefix' => 'administrador', 'namespace' => 'Admin'], function () {
 
     Route::resource('users', 'UserController');
+    Route::resource('lideres', 'LiderController');
+    Route::resource('puestos', 'PuestoController');
+    Route::resource('votantes', 'VotanteController');
 
 });

@@ -2,9 +2,10 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
-use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\EditUserRequest;	
+use App\Lider;
+use App\Puesto;
+use App\Votante;
+use Input;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Routing\Route;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 
-class UserController extends Controller {
+class VotanteController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -21,8 +22,8 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-		$datos = User::all();
-		return view('admin.usuarios.index', compact('datos'));
+		$datos = Votante::all();
+		return view('admin.votantes.index', compact('datos')); 
 	}
 
 	/**
@@ -32,7 +33,14 @@ class UserController extends Controller {
 	 */
 	public function create()
 	{
-		return view('admin.usuarios.create');
+		$data['lideres'] = Lider::all();
+		$data['puestos'] = Puesto::all();
+
+		foreach ($data['lideres'] as $key => $value) {
+			$data['lideres'][$key]->name = $value->getFullName();
+		}
+
+		return view('admin.votantes.create', $data);
 	}
 
 	/**
@@ -40,11 +48,11 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(CreateUserRequest $request)
+	public function store()
 	{
-		$user = new User($request->all());
+		$user = new Votante(Input::all());
 		$user->save();
-		return redirect()->route('administrador.users.index');
+		return redirect()->route('administrador.votantes.index');
 	}
 
 	/**
@@ -65,8 +73,15 @@ class UserController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$user = User::findOrFail($id);
-		return view('admin.usuarios.edit',compact('user'));
+		$user = Votante::findOrFail($id);
+		$data['lideres'] = Lider::all();
+		$data['puestos'] = Puesto::all();
+
+		foreach ($data['lideres'] as $key => $value) {
+			$data['lideres'][$key]->name = $value->getFullName();
+		}
+
+		return view('admin.votantes.edit',compact('user'))->with('lideres',$data['lideres'])->with('puestos',$data['puestos']);
 	}
 
 	/**
@@ -75,10 +90,10 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(EditUserRequest $request,$id)
+	public function update($id)
 	{
-		$user = User::findOrFail($id);
-		$user->fill($request->all());
+		$user = Votante::findOrFail($id);
+		$user->fill(Input::all());
 		$user->save();
 		return redirect()->back();
 	}
@@ -91,7 +106,10 @@ class UserController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$user = Votante::findOrFail($id);
+		$user->delete();
+		return redirect()->back();
+
 	}
 
 }

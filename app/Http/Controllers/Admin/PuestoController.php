@@ -2,9 +2,8 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
-use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\EditUserRequest;	
+use App\Puesto;
+use Input;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Routing\Route;
@@ -12,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 
-class UserController extends Controller {
+class PuestoController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -21,8 +20,8 @@ class UserController extends Controller {
 	 */
 	public function index()
 	{
-		$datos = User::all();
-		return view('admin.usuarios.index', compact('datos'));
+		$datos = Puesto::all();
+		return view('admin.puestos.index', compact('datos')); 
 	}
 
 	/**
@@ -32,7 +31,7 @@ class UserController extends Controller {
 	 */
 	public function create()
 	{
-		return view('admin.usuarios.create');
+		return view('admin.puestos.create');
 	}
 
 	/**
@@ -40,11 +39,11 @@ class UserController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(CreateUserRequest $request)
+	public function store()
 	{
-		$user = new User($request->all());
+		$user = new Puesto(Input::all());
 		$user->save();
-		return redirect()->route('administrador.users.index');
+		return redirect()->route('administrador.puestos.index');
 	}
 
 	/**
@@ -65,8 +64,8 @@ class UserController extends Controller {
 	 */
 	public function edit($id)
 	{
-		$user = User::findOrFail($id);
-		return view('admin.usuarios.edit',compact('user'));
+		$user = Puesto::findOrFail($id);
+		return view('admin.puestos.edit',compact('user'));
 	}
 
 	/**
@@ -75,10 +74,10 @@ class UserController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(EditUserRequest $request,$id)
+	public function update($id)
 	{
-		$user = User::findOrFail($id);
-		$user->fill($request->all());
+		$user = Puesto::findOrFail($id);
+		$user->fill(Input::all());
 		$user->save();
 		return redirect()->back();
 	}
@@ -91,7 +90,10 @@ class UserController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		//
+		$user = Puesto::findOrFail($id);
+		$user->delete();
+		return redirect()->back();
+
 	}
 
 }

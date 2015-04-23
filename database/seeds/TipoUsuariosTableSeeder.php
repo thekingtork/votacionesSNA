@@ -47,7 +47,7 @@ class TipoUsuariosTableSeeder extends Seeder {
                 'email'=> $faker->unique()->email,
                 'sector' => $faker->streetAddress
             ));
-            for ( $i = 0; $i < 4; $i++ ) {
+            for ( $j = 0; $j < 4; $j++ ) {
                 \DB::table('votantes')->insert(array(
                     'cedula'=> $faker->randomNumber($nbDigits = NULL),
                     'primer_nombre' => $faker->firstName,
