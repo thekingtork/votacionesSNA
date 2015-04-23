@@ -44,3 +44,13 @@
         <li><a  href="{{ url('/administrador/votantes/create') }}">Agregar</a></li>
       </ul>
     </li>
+    <li class="sub-menu">
+        <a href="javascript:;" >
+            <i class="fa fa-archive"></i>
+        <span>Administrar votación</span>
+      </a>
+      <ul class="sub">
+        <li><a  href="{{ url('/administrador/votos') }}">Votaciones</a></li>
+        <li><a  href="{{ url('/administrador/votos/reiniciar') }}">Agregar</a></li>
+      </ul>
+    </li>

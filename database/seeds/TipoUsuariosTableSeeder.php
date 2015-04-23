@@ -29,8 +29,22 @@ class TipoUsuariosTableSeeder extends Seeder {
             'email'=> 'victor.puello@gmail.com',
             'password'=> \Hash::make('tork2010'),
         ));
-        /*
-        $faker = Faker::create();
+
+        \DB::table('lideres')->insert(array(
+                'cedula'=> "11111111",
+                'primer_nombre' => "Lider",
+                'segundo_nombre'=> "",
+                'primer_apellido' => "General",
+                'segundo_apellido'=> "",
+                'sexo'=> 'masculino',
+                'telefono' => "",
+                'email'=> "lidergeneral@mail.com",
+                'sector' => ""
+            ));
+
+
+        /*$faker = Faker::create();
+
         for ( $i = 0; $i < 30; $i++ ) {
            $identif = \DB::table('puestos_votacion')->insertGetId(array(
                 'nombre'=> $faker->unique()->company,
@@ -65,5 +79,6 @@ class TipoUsuariosTableSeeder extends Seeder {
             }
         }
         */
+
     }
 }

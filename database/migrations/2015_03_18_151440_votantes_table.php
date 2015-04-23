@@ -29,6 +29,7 @@ class VotantesTable extends Migration {
             $table->foreign('lider_id')->references('id')->on('lideres');
             $table->integer('puestos_votacion_id')->unsigned();
             $table->foreign('puestos_votacion_id')->references('id')->on('puestos_votacion');
+            $table->integer('numero_mesa');
 			$table->timestamps();
 		});
 	}

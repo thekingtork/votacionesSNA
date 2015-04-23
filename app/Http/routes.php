@@ -27,4 +27,9 @@ Route::group(['prefix' => 'administrador', 'namespace' => 'Admin'], function () 
     Route::resource('puestos', 'PuestoController');
     Route::resource('votantes', 'VotanteController');
 
+    Route::get('votos', [ 'as' => 'votos', 'uses' => 'VotosController@index']);
+    Route::post('votos/votar/{id}', [ 'as' => 'votar', 'uses' => 'VotosController@votar']);
+    Route::get('votos/reiniciar', [ 'as' => 'votos.reiniciar', 'uses' => 'VotosController@reiniciar']);
+    Route::post('votos/reiniciar', [ 'as' => 'votos.reiniciar_update', 'uses' => 'VotosController@reiniciar_update']);
+    
 });

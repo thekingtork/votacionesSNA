@@ -10,15 +10,13 @@
               <!-- page start-->
               <section class="panel">
                   <header class="panel-heading">
-                      Listado de votantes
+                      Votos
                   </header>
                   <div class="panel-body">
                       <div class="adv-table editable-table ">
                           <div class="clearfix">
                               <div class="btn-group">
-                                  <a href="{{ url('/administrador/votantes/create') }}" class="btn btn-primary" type="button">
-                                      Agregar <i class="fa fa-plus"></i>
-                                  </a>
+                                  
                               </div>
                               <div class="btn-group pull-right">
                                   <button class="btn dropdown-toggle" data-toggle="dropdown">Herramientas <i class="fa fa-angle-down"></i>
@@ -34,29 +32,15 @@
                           <table class="table table-striped table-hover table-bordered" id="editable-sample">
                               <thead>
                               <tr>
-                                  <th>Correo</th>
                                   <th>Nombre</th>
-                                  <th>Telefono</th>
-                                  <th>Sexo</th>
-                                  <th>dirección</th>
-                                  <th>Lider</th>
-                                  <th>Puesto de votación</th>
-                                  <th>Editar</th>
-                                  <th>Eliminar</th>
+                                  <th>Votar</th>
                               </tr>
                               </thead>
                               <tbody>
                               	@foreach ($datos as $dato)
 	                              <tr class="">
-	                                  <td>{{ $dato->email }}</td>
-                                    <td>{{ $dato->getFullName() }}</td>
-                                    <td>{{ $dato->telefono }}</td>
-                                    <td>{{ $dato->sexo }}</td>
-                                    <td>{{ $dato->direccion }}</td>
-                                    <td>{{ $dato->lider->getFullName() }}</td>
-	                                  <td>{{ $dato->puesto->nombre }}</td>
-	                                  <td><a href="{{ route('administrador.votantes.edit',$dato->id )}}">Editar</a></td>
-	                                  <td><button class="btn btn-danger deleted"  data-url="{{ route('administrador.votantes.destroy', $dato->id ) }}">Eliminar</button></td>
+	                                  <td>{{ $dato->getFullName() }}</td>
+	                                  <td><button class="btn btn-danger votar" data-puesto="{{ $dato->puesto->nombre }}" data-mesa="{{ $dato->numero_mesa }}"  data-url="{{ url('administrador/votos/votar', $dato->id ) }}">Votar</button></td>
 	                              </tr>
                               	@endforeach
                               </tbody>
@@ -72,14 +56,26 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Modal Tittle</h4>
+                    <h4 class="modal-title">Vas a votar</h4>
                 </div>
                 <div class="modal-body">
-                  ¿Seguro que desea eliminar?
+                  <div class="col-sm-6"><h4>Puesto de votacion</h4></div> 
+                  <div class="col-sm-6">
+                    <h3>
+                      <span id="n-puesto"></span>
+                    </h3>
+                  </div>
+                  <div class="col-sm-6">
+                    <h4>Mesa:</h4>
+                  </div>
+                  <div class="col-sm-6">
+                    <h3>
+                      <span id="n-mesa"></span>
+                    </h3>
+                  </div>
                 </div>
                 <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
-                    {!! Form::open(['method' => 'DELETE', 'id' => "form-delete" ]) !!}
+                    {!! Form::open(['method' => 'POST', 'id' => "form-voto" ]) !!}
                        <button type="submit" class="btn btn-warning">Confirmar</button>
                     {!! Form::close() !!}
                 </div>
@@ -99,8 +95,10 @@
           
       </script>
       <script type="text/javascript">
-            $(".deleted").click(function (e) {
-                $("#form-delete").attr('action', $(this).data('url') );
+            $(".votar").click(function (e) {
+                $("#form-voto").attr('action', $(this).data('url') );
+                $("#n-mesa").html($(this).data('mesa') );
+                $("#n-puesto").html($(this).data('puesto') );
                 $("#myModal2").modal('show');
             });
       </script>
