@@ -59,7 +59,7 @@
                                     <td>{{ $dato->sexo }}</td>
 	                                  <td>{{ $dato->sector }}</td>
 	                                  <td><a href="{{ route('administrador.lideres.edit',$dato->id )}}">Editar</a></td>
-	                                  <td><button class="btn btn-danger deleted"  data-url="{{ route('administrador.lideres.destroy', $dato->id ) }}">Eliminar</button></td>
+	                                  <td><button class="btn btn-danger deleted"  data-url="{{ route('administrador.lideres.destroy', $dato->id ) }}">Eliminar</button></td> 
 	                              </tr>
                               	@endforeach
                               </tbody>
@@ -75,7 +75,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Modal Tittle</h4>
+                    <h4 class="modal-title">Eliminar</h4>
                 </div>
                 <div class="modal-body">
                   ¿Seguro que desea eliminar?

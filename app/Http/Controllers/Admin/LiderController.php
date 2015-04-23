@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Lider;
+use App\Votante;
 use Input;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -90,7 +91,18 @@ class LiderController extends Controller {
 	 */
 	public function destroy($id)
 	{
+		if($id == 1 )
+			return redirect()->back();
+
 		$user = Lider::findOrFail($id);
+		$votantes = $user->votantes;
+		
+		foreach ($votantes as $key => $value) 
+		{
+			$v = Votante::find($value->id);
+			$v->lider_id = 1;
+			$v->save();
+		}
 		$user->delete();
 		return redirect()->back();
 

@@ -13,4 +13,9 @@ class Lider extends Model {
 	{
 		return $this->primer_nombre . ' ' . $this->primer_apellido;
 	}
+
+	public function votantes()
+    {
+        return $this->hasMany('App\Votante');
+    }
 }

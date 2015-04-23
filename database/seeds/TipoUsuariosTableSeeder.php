@@ -29,7 +29,7 @@ class TipoUsuariosTableSeeder extends Seeder {
             'email'=> 'victor.puello@gmail.com',
             'password'=> \Hash::make('tork2010'),
         ));
-
+        /*
         $faker = Faker::create();
         for ( $i = 0; $i < 30; $i++ ) {
            $identif = \DB::table('puestos_votacion')->insertGetId(array(
@@ -64,5 +64,6 @@ class TipoUsuariosTableSeeder extends Seeder {
                 ));
             }
         }
+        */
     }
 }
