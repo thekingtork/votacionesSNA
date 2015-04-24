@@ -10,7 +10,7 @@
 <section class="wrapper site-min-height">
               <!-- page start-->
               <section class="panel">
-                  <header class="panel-heading">
+                  <header class="panel-heading red">
                       Listado de usuarios
                   </header>
                   <div class="panel-body">
@@ -50,7 +50,10 @@
 	                                  <td>{{ $dato->getFullName()}}</td>
 	                                  <td>{{ $dato->tipoUsuario->perfil }}</td>
 	                                  <td>{{ $dato->telefono }}</td>
-	                                  <td><a href="{{ route('administrador.users.edit',$dato->id )}}">Editar</a></td>
+	                                  <td>
+                                      <button class="btn btn-warning"><a style = "color:white;" href="{{ route('administrador.users.edit',$dato->id )}}">Editar</a></button>  
+
+                                    </td>
 	                                  <td><button class="btn btn-danger deleted"  data-url="{{ route('administrador.users.destroy', $dato->id ) }}">Eliminar</button></td>
 	                              </tr>
                               	@endforeach
@@ -62,24 +65,26 @@
               <!-- page end-->
           </section>
 </section>
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Eliminar</h4>
-                </div>
-                <div class="modal-body">
-                  ¿Seguro que desea eliminar?
-                </div>
-                <div class="modal-footer">
-                    <button data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
-                    {!! Form::open(['method' => 'DELETE', 'id' => "form-delete" ]) !!}
-                       <button type="submit" class="btn btn-warning">Confirmar</button>
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title">Alerta - Eliminar usuario</h4>
+          </div>
+          <div class="modal-body">
+                  ¿Esta usted seguro que desea eliminar?
+          </div>
+          <div class="modal-footer">
+          <div class="row">
+              <button data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
+              {!! Form::open(['method' => 'DELETE', 'id' => "form-delete" ,'style' => 'display: inline-block;']) !!}
+                  <button type="submit" class="btn btn-warning">Confirmar</button>
+              {!! Form::close() !!}            
+          </div>
+          </div>
+      </div>
+  </div>
 </div>
 @endsection
 @section('script')
