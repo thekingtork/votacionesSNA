@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\CreatePuestoRequest;
+use App\Http\Requests\EditPuestoRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Puesto;
@@ -39,9 +41,9 @@ class PuestoController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CreatePuestoRequest $request)
 	{
-		$user = new Puesto(Input::all());
+		$user = new Puesto($request->all());
 		$user->save();
 		return redirect()->route('administrador.puestos.index');
 	}
@@ -74,10 +76,10 @@ class PuestoController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(EditPuestoRequest $request,$id)
 	{
 		$user = Puesto::findOrFail($id);
-		$user->fill(Input::all());
+		$user->fill($request->all());
 		$user->save();
 		return redirect()->back();
 	}

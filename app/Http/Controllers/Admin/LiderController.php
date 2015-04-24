@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 use App\Lider;
 use App\Votante;
 use Input;
+use App\Http\Requests\CreateLiderRequest;
+use App\Http\Requests\EditLiderRequest;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Routing\Route;
@@ -40,9 +42,9 @@ class LiderController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CreateLiderRequest $request)
 	{
-		$user = new Lider(Input::all());
+		$user = new Lider($request->all());
 		$user->save();
 		return redirect()->route('administrador.lideres.index');
 	}
@@ -75,10 +77,10 @@ class LiderController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(EditLiderRequest $request,$id)
 	{
 		$user = Lider::findOrFail($id);
-		$user->fill(Input::all());
+		$user->fill($request->all());
 		$user->save();
 		return redirect()->back();
 	}

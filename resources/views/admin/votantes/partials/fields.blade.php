@@ -28,7 +28,7 @@
                       </div>
                       <div class="form-group">
                           {!! Form::label('sexo', 'Sexo') !!}
-                          {!! Form::select('sexo',[''=>'Seleccione ','masculino'=>'masculino','femenino'=>'femenino'], null, ['class' => 'form-control'  ]) !!}
+                          {!! Form::select('sexo',[''=>'Seleccione ','masculino'=>'Masculino','femenino'=>'Femenino'], null, ['class' => 'form-control'  ]) !!}
                       </div>
                       <div class="form-group">
                         {!! Form::label('direccion', 'Dirección') !!}

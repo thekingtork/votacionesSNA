@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\CreateVotanteRequest;
+use App\Http\Requests\EditVotanteRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Lider;
@@ -48,9 +50,9 @@ class VotanteController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(CreateVotanteRequest $request)
 	{
-		$user = new Votante(Input::all());
+		$user = new Votante($request->all());
 		$user->save();
 		return redirect()->route('administrador.votantes.index');
 	}
@@ -90,10 +92,10 @@ class VotanteController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(EditVotanteRequest $request,$id)
 	{
 		$user = Votante::findOrFail($id);
-		$user->fill(Input::all());
+		$user->fill($request->all());
 		$user->save();
 		return redirect()->back();
 	}

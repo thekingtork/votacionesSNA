@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class CreateUserRequest extends Request {
+class CreateLiderRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,13 +22,16 @@ class CreateUserRequest extends Request {
 	public function rules()
 	{
 		return [
-            'primer_nombre' => 'required|min:3|alpha|max:32', 
+			'cedula' => 'required|numeric|max:9999999999|min:1000000|unique:lideres,cedula',
+			'primer_nombre' => 'required|min:3|alpha|max:32', 
+			'segundo_nombre ' => 'max:32|alpha', 
 			'primer_apellido' => 'required|alpha|min:3|max:32',
-            'telefono' => 'required|numeric|max:9999999999|min:1000000|',
-            'email' => 'required|unique:users,email',
-            'password' => 'required|min:8',
-            'tipo_usuario_id' => 'required|in:1,2,3'
+			'segundo_apellido' => 'max:32|alpha',
+			'telefono' => 'required|min:7',
+			'email|email',
+			'sexo' => 'required',
+			'sector' => 'required|min:13|max:52',	
 		];
 	}
 
-}	
+}
