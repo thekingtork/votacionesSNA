@@ -4,6 +4,7 @@ use App\Lider;
 use App\Votante;
 use App\Puesto;
 use App\TipoUsuario;
+use Auth;
 use Illuminate\Contracts\Auth\Authenticatable;
 class HomeController extends Controller {
 
@@ -34,7 +35,9 @@ class HomeController extends Controller {
 				return view('administrador', $data);
 				break;	
 			case 'lider':
-				return view('lider');
+				$l = Lider::where('email', '=', Auth::user()->email)->first();
+				$data['votantes'] = count($l->votantes);
+				return view('lider', $data);
 				break;
 			case 'votante':
 				return view('votante');

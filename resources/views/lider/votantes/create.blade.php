@@ -4,7 +4,7 @@
    <link rel="stylesheet" href="{{ asset('/assets/data-tables/DT_bootstrap.css') }}" />
 @endsection
 @section('menuLateral')
-	@include('admin.menuLateral')
+	@include('lider.menuLateral')
 @endsection
 @section('content')
 <section class="wrapper site-min-height">
@@ -14,9 +14,9 @@
                       Crear lider
                   </header>
                   <div class="panel-body">
-                     @include('admin.partials.messages')
-                    {!! Form::open(['route' => 'administrador.votantes.store', 'method' => 'post']) !!}
-                      @include('admin.votantes.partials.fields')
+                     @include('lider.partials.messages')
+                    {!! Form::open(['route' => 'lider.votantes.store', 'method' => 'post']) !!}
+                      @include('lider.votantes.partials.fields')
                       <button type="submit" class="btn btn-default">Crear votante</button>
                     {!! Form::close() !!} 
                   </div>

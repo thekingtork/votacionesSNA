@@ -4,7 +4,7 @@
    <link rel="stylesheet" href="{{ asset('/assets/data-tables/DT_bootstrap.css') }}" />
 @endsection
 @section('menuLateral')
-	@include('admin.menuLateral')
+	@include('lider.menuLateral')
 @endsection
 @section('content')
 <section class="wrapper site-min-height">
@@ -14,9 +14,9 @@
                       Editar votante
                   </header>
                   <div class="panel-body">
-                     @include('admin.partials.messages')
-                    {!! Form::model($user,['route' => ['administrador.votantes.update',$user->id], 'method' => 'PUT']) !!}
-                      @include('admin.votantes.partials.fields')
+                     @include('lider.partials.messages')
+                    {!! Form::model($user,['route' => ['lider.votantes.update',$user->id], 'method' => 'PUT']) !!}
+                      @include('lider.votantes.partials.fields')
                       <button type="submit" class="btn btn-default">Guardar Cambios</button>
                     {!! Form::close() !!} 
                   </div>

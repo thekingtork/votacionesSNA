@@ -46,3 +46,7 @@
                           {!! Form::label('puestos_votacion_id', 'Puestos de votacion') !!}
                           {!! Form::select('puestos_votacion_id',array_pluck($puestos,'nombre','id'), null, ['class' => 'form-control'  ]) !!}
                       </div>
+                      <div class="form-group">
+                        {!! Form::label('numero_mesa', 'Número de Mesa') !!}
+                        {!! Form::text('numero_mesa', null, ['class' => 'form-control', 'placeholder' => 'Por favor introduzca el número de la Mesa']) !!}
+                      </div>

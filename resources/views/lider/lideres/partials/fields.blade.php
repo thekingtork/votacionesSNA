@@ -28,9 +28,25 @@
                       </div>
                       <div class="form-group">
                           {!! Form::label('sexo', 'Sexo') !!}
-                          {!! Form::select('sexo',[''=>'Seleccione ','masculino'=>'masculino','femenino'=>'femenino'], null, ['class' => 'form-control'  ]) !!}
+                          {!! Form::select('sexo',[''=>'Seleccione ','masculino'=>'Masculino','femenino'=>'Femenino'], null, ['class' => 'form-control'  ]) !!}
                       </div>
                       <div class="form-group">
-                        {!! Form::label('sector', 'Sector') !!}
-                        {!! Form::text('sector', null, ['class' => 'form-control', 'placeholder' => 'Por favor introduzca el sector'] ) !!}
+                        {!! Form::label('direccion', 'Dirección') !!}
+                        {!! Form::text('direccion', null, ['class' => 'form-control', 'placeholder' => 'Por favor introduzca la dirección'] ) !!}
+                      </div>
+                      <div class="form-group">
+                        {!! Form::label('sufrago', 'Sufrago') !!}
+                        {!! Form::text('sufrago', null, ['class' => 'form-control', 'placeholder' => 'Por favor introduzca el sufrago'] ) !!}
+                      </div>
+                      <div class="form-group">
+                          {!! Form::label('lider_id', 'Lider') !!}
+                          {!! Form::select('lider_id',array_pluck($lideres,'name','id'), null, ['class' => 'form-control'  ]) !!}
+                      </div>
+                      <div class="form-group">
+                          {!! Form::label('puestos_votacion_id', 'Puestos de votacion') !!}
+                          {!! Form::select('puestos_votacion_id',array_pluck($puestos,'nombre','id'), null, ['class' => 'form-control'  ]) !!}
+                      </div>
+                      <div class="form-group">
+                        {!! Form::label('numero_mesa', 'Número de Mesa') !!}
+                        {!! Form::text('numero_mesa', null, ['class' => 'form-control', 'placeholder' => 'Por favor introduzca el número de la Mesa']) !!}
                       </div>

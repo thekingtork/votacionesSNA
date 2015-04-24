@@ -3,7 +3,7 @@
    <link rel="stylesheet" href="{{ asset('/assets/data-tables/DT_bootstrap.css') }}" />
 @endsection
 @section('menuLateral')
-	@include('admin.menuLateral')
+	@include('lider.menuLateral')
 @endsection
 @section('content')
 <section class="wrapper site-min-height">
@@ -16,7 +16,7 @@
                       <div class="adv-table editable-table ">
                           <div class="clearfix">
                               <div class="btn-group">
-                                  <a href="{{ url('/administrador/votantes/create') }}" class="btn btn-primary" type="button">
+                                  <a href="{{ url('/lider/votantes/create') }}" class="btn btn-primary" type="button">
                                       Agregar <i class="fa fa-plus"></i>
                                   </a>
                               </div>
@@ -55,8 +55,8 @@
                                     <td>{{ $dato->direccion }}</td>
                                     <td>{{ $dato->lider->getFullName() }}</td>
 	                                  <td>{{ $dato->puesto->nombre }}</td>
-	                                  <td><a href="{{ route('administrador.votantes.edit',$dato->id )}}">Editar</a></td>
-	                                  <td><button class="btn btn-danger deleted"  data-url="{{ route('administrador.votantes.destroy', $dato->id ) }}">Eliminar</button></td>
+	                                  <td><a href="{{ route('lider.votantes.edit',$dato->id )}}">Editar</a></td>
+	                                  <td><button class="btn btn-danger deleted"  data-url="{{ route('lider.votantes.destroy', $dato->id ) }}">Eliminar</button></td>
 	                              </tr>
                               	@endforeach
                               </tbody>
