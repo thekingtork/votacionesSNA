@@ -20,6 +20,10 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::group(['prefix' => 'lider', 'namespace' => 'Lider'], function () {
+    Route::resource('votantes', 'VotanteController');
+});
+
 Route::group(['prefix' => 'administrador', 'namespace' => 'Admin'], function () {
 
     Route::resource('users', 'UserController');

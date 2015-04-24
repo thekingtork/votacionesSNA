@@ -51,6 +51,6 @@
       </a>
       <ul class="sub">
         <li><a  href="{{ url('/administrador/votos') }}">Votaciones</a></li>
-        <li><a  href="{{ url('/administrador/votos/reiniciar') }}">Agregar</a></li>
+        <li><a  href="{{ url('/administrador/votos/reiniciar') }}">Reiniciar votaciones</a></li>
       </ul>
     </li>
