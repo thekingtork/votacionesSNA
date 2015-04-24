@@ -57,18 +57,151 @@
                 </section>
             </a>
         </div>
-        <div class="col-lg-3 col-sm-12">
-            <a href="{{ url('/administrador/votos') }}">
-                <section class="panel">
-                    <div class="symbol terques">
-                        <i class="fa fa-archive"></i>
-                    </div>
-                    <div class="value">
-                        <h1>Votar</h1>
-                    </div>
+    </div>
+    <div class="row state-overview">
+      <div class="col-lg-4">
+          <section class="panel">
+            <div class="twt-feed blue-bg">
+                <h1>Sandra Nieto A. </h1>
+                <p>sna@snaconcejo.com.co</p>
+                <a href="#">
+                  <img src="img/profile-avatar.jpg" alt="">
+                </a>
+            </div>
+            <div class="weather-category twt-category">
+              <ul>
+                  <li class="active">
+                      <h5>320</h5>
+                      Tweet
+                  </li>
+                  <li>
+                    <h5>1245</h5>
+                    Siguiendo
+                  </li>
+                  <li>
+                      <h5>24657</h5>
+                        Seguidores
+                  </li>
+              </ul>
+            </div>
+            <div class="twt-write col-sm-12">
+                <textarea class="form-control  t-text-area" rows="2" placeholder="Tweet Here"></textarea>
+            </div>
+            <footer class="twt-footer">
+                <button class="btn btn-space btn-white" data-toggle="button">
+                    <i class="fa fa-map-marker"></i>
+                </button>
+                <button class="btn btn-space btn-white" data-toggle="button">
+                    <i class="fa fa-camera"></i>
+                </button>
+                <button class="btn btn-space btn-info pull-right" type="button">
+                    <i class="fa fa-twitter"></i>
+                    Tweet
+                </button>
+            </footer>
+        </section>
+      </div> 
+      <div class="col-lg-4">
+        <section class="panel">
+          <header class="panel-heading red">
+            <span style="color:white;">Ultimos usuarios</span>             
+            <span class="tools pull-right">
+                <a class="fa fa-chevron-down" href="javascript:;"></a>
+                <a class="fa fa-times" href="javascript:;"></a>
+            </span>
+            </header>
+              <div class="panel-body">
+                <div class="row col-lg-12">
+                <section id="unseen">
+                  <table class="table table-hover">
+                              <thead>
+                              <tr>
+                                  <th>#</th>
+                                  <th>Primer Nombre</th>
+                                  <th>Segundo Nombre</th>
+                                  <th>Tipo de Usuario</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                  <td>1</td>
+                                  <td>Mark</td>
+                                  <td>Otto</td>
+                                  <td>@mdo</td>
+                              </tr>
+                              <tr>
+                                  <td>2</td>
+                                  <td>Jacob</td>
+                                  <td>Thornton</td>
+                                  <td>@fat</td>
+                              </tr>
+                              <tr>
+                                  <td>3</td>
+                                  <td colspan="2">Larry the Bird</td>
+                                  <td>@twitter</td>
+                              </tr>
+                              <tr>
+                                  <td>3</td>
+                                  <td>Sumon</td>
+                                  <td>Mosa</td>
+                                  <td>@twitter</td>
+                              </tr>
+                              </tbody>
+                  </table>
                 </section>
-            </a>
-        </div>
+                </div>
+              </div>
+        </section>
+      </div>
+      <div class="col-lg-4">
+        <section class="panel">
+          <header class="panel-heading terques">
+          <span style="color:white;">Ultimos Votantes</span>
+             
+            <span class="tools pull-right">
+                <a class="fa fa-chevron-down" href="javascript:;"></a>
+                <a class="fa fa-times" href="javascript:;"></a>
+            </span>
+            </header>
+              <div class="panel-body">
+                <table class="table table-hover">
+                              <thead>
+                              <tr>
+                                  <th>#</th>
+                                  <th>Nombre</th>
+                                  <th>Lider</th>
+                                  <th>Puesto de votación</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              <tr>
+                                  <td>1</td>
+                                  <td>Mark</td>
+                                  <td>Otto</td>
+                                  <td>@mdo</td>
+                              </tr>
+                              <tr>
+                                  <td>2</td>
+                                  <td>Jacob</td>
+                                  <td>Thornton</td>
+                                  <td>@fat</td>
+                              </tr>
+                              <tr>
+                                  <td>3</td>
+                                  <td colspan="2">Larry the Bird</td>
+                                  <td>@twitter</td>
+                              </tr>
+                              <tr>
+                                  <td>3</td>
+                                  <td>Sumon</td>
+                                  <td>Mosa</td>
+                                  <td>@twitter</td>
+                              </tr>
+                              </tbody>
+                  </table>
+              </div>
+        </section>
+      </div> 
     </div>
 </section>
 @endsection
