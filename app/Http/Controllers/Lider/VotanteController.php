@@ -8,6 +8,7 @@ use App\Lider;
 use App\Puesto;
 use App\Votante;
 use Input;
+use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Routing\Route;
@@ -24,7 +25,9 @@ class VotanteController extends Controller {
 	 */
 	public function index()
 	{
-		$datos = Votante::all();
+		$l = Lider::where('email', '=', Auth::user()->email)->first();
+
+		$datos = $l->votantes;
 		return view('lider.votantes.index', compact('datos')); 
 	}
 
