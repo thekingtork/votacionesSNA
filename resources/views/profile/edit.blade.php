@@ -1,5 +1,7 @@
 @extends('app')
-
+@section('menuLateral')
+  @include('admin.menuLateral')
+@endsection
 @section('content')
     <section class="wrapper">
               <!-- page start-->
