@@ -28,7 +28,7 @@ class EditLiderRequest extends Request {
 	{
 		//dd($this->route->getParameter('lideres'));
 		return [
-			'cedula' => 'required|numeric|max:9999999999|min:1000000|unique:lideres,cedula,,'. $this->route->getParameter('lideres'),
+			'cedula' => 'required|numeric|max:9999999999|min:1000000|unique:lideres,cedula,'. $this->route->getParameter('lideres'),
 			'primer_nombre' => 'required|min:3|alpha|max:32', 
 			'segundo_nombre ' => 'max:32|alpha', 
 			'primer_apellido' => 'required|alpha|min:3|max:32',
