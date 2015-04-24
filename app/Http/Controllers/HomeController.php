@@ -32,6 +32,8 @@ class HomeController extends Controller {
 				$data['lideres'] = Lider::count();
 				$data['votantes'] = Votante::count();
 				$data['puestos'] = Puesto::count();
+				$data['last_users'] = User::orderBy('id','DESC')->take(5)->get();
+				$data['last_votantes'] = Votante::orderBy('id','DESC')->take(5)->get();
 				return view('administrador', $data);
 				break;	
 			case 'lider':

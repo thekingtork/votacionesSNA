@@ -15,7 +15,7 @@
                         <h1 class="count2"></h1>
                         <p>Usuarios</p>
                     </div>
-                </section>
+                </section> 
             </a>
         </div>
         <div class="col-lg-3 col-sm-6">
@@ -119,33 +119,18 @@
                                   <th>#</th>
                                   <th>Primer Nombre</th>
                                   <th>Segundo Nombre</th>
-                                  <th>Tipo de Usuario</th>
+                                  <th>Tipo de Usuario</th> 
                               </tr>
                               </thead>
                               <tbody>
+                                @foreach($last_users as $key => $user)
                               <tr>
-                                  <td>1</td>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
+                                  <td>{{ $key + 1 }}</td>
+                                  <td>{{ $user->primer_nombre }}</td>
+                                  <td>{{ $user->segundo_nombre }}</td>
+                                  <td>{{ $user->tipoUsuario->perfil }}</td>
                               </tr>
-                              <tr>
-                                  <td>2</td>
-                                  <td>Jacob</td>
-                                  <td>Thornton</td>
-                                  <td>@fat</td>
-                              </tr>
-                              <tr>
-                                  <td>3</td>
-                                  <td colspan="2">Larry the Bird</td>
-                                  <td>@twitter</td>
-                              </tr>
-                              <tr>
-                                  <td>3</td>
-                                  <td>Sumon</td>
-                                  <td>Mosa</td>
-                                  <td>@twitter</td>
-                              </tr>
+                              @endforeach
                               </tbody>
                   </table>
                 </section>
@@ -175,28 +160,13 @@
                               </thead>
                               <tbody>
                               <tr>
-                                  <td>1</td>
-                                  <td>Mark</td>
-                                  <td>Otto</td>
-                                  <td>@mdo</td>
+                              @foreach($last_votantes as $key => $v)
+                                  <td>{{ $key + 1 }}</td>
+                                  <td>{{ $v->getFullName() }}</td>
+                                  <td>{{ $v->lider->getFullName() }}</td>
+                                  <td>{{ $v->puesto->nombre }}</td>
                               </tr>
-                              <tr>
-                                  <td>2</td>
-                                  <td>Jacob</td>
-                                  <td>Thornton</td>
-                                  <td>@fat</td>
-                              </tr>
-                              <tr>
-                                  <td>3</td>
-                                  <td colspan="2">Larry the Bird</td>
-                                  <td>@twitter</td>
-                              </tr>
-                              <tr>
-                                  <td>3</td>
-                                  <td>Sumon</td>
-                                  <td>Mosa</td>
-                                  <td>@twitter</td>
-                              </tr>
+                              @endforeach
                               </tbody>
                   </table>
               </div>
