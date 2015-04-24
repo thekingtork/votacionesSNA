@@ -18,7 +18,7 @@
                     {!! Form::open(['route' => 'administrador.users.store', 'method' => 'post']) !!}
                       @include('admin.usuarios.partials.fields')
                       <button type="submit" class="btn btn-default">Crear usuario</button>
-                    {!! Form::close() !!} 
+                    {!! Form::close() !!}
                   </div>
               </section>
               <!-- page end-->

@@ -41,15 +41,62 @@ class TipoUsuariosTableSeeder extends Seeder {
                 'email'=> "lidergeneral@mail.com",
                 'sector' => ""
             ));
-
+        \DB::table('puestos_votacion')->insertGetId(array(
+                'nombre' => 'Col.dolores Garrido De Gonzal', 
+                'numero_de_mesa' => '8'
+            )); 
+        \DB::table('puestos_votacion')->insertGetId(array(
+                'nombre' => 'Col.nacionalizado Marceliano ',
+                'numero_de_mesa' =>  '39'
+            )); 
+        \DB::table('puestos_votacion')->insertGetId(array(
+                'nombre' => 'Colegio 24 De Mayo',
+                'numero_de_mesa'=>  '22'
+            )); 
+        \DB::table('puestos_votacion')->insertGetId(array(
+                'nombre' => 'Cuero Curtido',
+                'numero_de_mesa'=>   '2'
+            )); 
+        \DB::table('puestos_votacion')->insertGetId(array(
+                'nombre' => 'Los Venados Campanito',
+                'numero_de_mesa'=>  '5'
+            )); 
+        \DB::table('puestos_votacion')->insertGetId(array(
+                'nombre' => 'Manguelito',
+                'numero_de_mesa'=>  '5'
+            )); 
+        \DB::table('puestos_votacion')->insertGetId(array(
+                'nombre' => 'Martinez',
+                'numero_de_mesa'=>    '12'
+            ));
+        \DB::table('puestos_votacion')->insertGetId(array(
+                'nombre' => 'Mateo Gomez',
+                'numero_de_mesa'=>'11'
+            ));
+        \DB::table('puestos_votacion')->insertGetId(array(
+                'nombre' => 'Nueva Sede Escuela Del Prado',
+                'numero_de_mesa'=>    '15'
+            ));
+        \DB::table('puestos_votacion')->insertGetId(array(
+                'nombre' => 'Rabolargo',
+                'numero_de_mesa'=>  '9'
+            ));
+        \DB::table('puestos_votacion')->insertGetId(array(
+                'nombre' => 'Retiro De Los Indios',
+                'numero_de_mesa'=>   '12'
+            ));
+        \DB::table('puestos_votacion')->insertGetId(array(
+                'nombre' => 'Severa',
+                'numero_de_mesa'=>  '5'
+            ));
+        \DB::table('puestos_votacion')->insertGetId(array(
+                'nombre' => 'Tres Maria',
+                'numero_de_mesa'=>  '2'
+            ));
 
         /*$faker = Faker::create();
 
         for ( $i = 0; $i < 30; $i++ ) {
-           $identif = \DB::table('puestos_votacion')->insertGetId(array(
-                'nombre'=> $faker->unique()->company,
-                'numero_de_mesa' => $faker->randomDigitNotNull
-            ));
             $liderId = \DB::table('lideres')->insertGetId(array(
                 'cedula'=> $faker->randomNumber($nbDigits = NULL),
                 'primer_nombre' => $faker->firstName,

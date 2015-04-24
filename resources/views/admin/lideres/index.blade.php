@@ -58,7 +58,10 @@
                                     <td>{{ $dato->telefono }}</td>
                                     <td>{{ $dato->sexo }}</td>
 	                                  <td>{{ $dato->sector }}</td>
-	                                  <td><a href="{{ route('administrador.lideres.edit',$dato->id )}}">Editar</a></td>
+	                                  <td>
+                                        <button class="btn btn-warning"><a style = "color:white;" href="{{ route('administrador.lideres.edit',$dato->id )}}">Editar</a>
+                                      </button> 
+                                    </td>
 	                                  <td><button class="btn btn-danger deleted"  data-url="{{ route('administrador.lideres.destroy', $dato->id ) }}">Eliminar</button></td> 
 	                              </tr>
                               	@endforeach
