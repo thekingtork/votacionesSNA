@@ -51,7 +51,7 @@
                         </a>
                         <ul class="dropdown-menu extended logout">
                             <div class="log-arrow-up"></div>
-                            <li><a href="#"><i class=" fa fa-suitcase"></i>Perfil</a></li>
+                            <li><a href="{{ url('/user/profile') }}"><i class=" fa fa-suitcase"></i>Perfil</a></li>
                             <li><a href="#"><i class="fa fa-cog"></i>Config</a></li>
                             <li><a href="#"><i class="fa fa-bell-o"></i>Notificaciones</a></li>
                             <li><a href="{{ url('/auth/logout') }}"><i class="fa fa-key"></i> Salir</a></li>
