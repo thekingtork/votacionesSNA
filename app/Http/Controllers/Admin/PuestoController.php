@@ -84,7 +84,7 @@ class PuestoController extends Controller {
 	public function ajax_edit($id)
 	{
 		$user = Puesto::findOrFail($id);
-		return view('admin.puestos.aja_edit',compact('user'));
+		return response()->json(['success' => true, 'html' => view('admin.puestos.ajax_edit',compact('user') )->render() ]);
 	}
 
 	/**

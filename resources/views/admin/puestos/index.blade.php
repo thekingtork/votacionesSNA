@@ -47,7 +47,7 @@
                                     <td>{{ $dato->nombre }}</td>
 	                                  <td>{{ $dato->numero_de_mesa }}</td>
 	                                  <td>
-                                       <button class="btn btn-warning editar" style = "text-aling:center;" data-url="{{ route('administrador.puestos.edit',$dato->id )}}">
+                                       <button class="btn btn-warning editar" style = "text-aling:center;" data-url="{{ url('/administrador/puestos/ajax_edit',$dato->id )}}">
                                           Editar
                                        </button> 
                                     </td>
@@ -116,6 +116,9 @@
                     <h4 class="modal-title">Editar puesto de votación</h4>
                     <meta name="csrf-token" content="{{ csrf_token() }}" />
                 </div>
+                    <div id="content_ajax">
+                      
+                    </div>
                 
             </div>
         </div>
@@ -141,16 +144,18 @@
                 $("#myModal3").modal('show');
             });
             $(".editar").click(function (e) {
+              var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
               $.ajax({
                 type    :"POST",
-                url     :"{{ url('/votante/consultar') }}",
+                url     : $(this).data('url') ,
                 dataType:"json",
-                data    :{ _token: CSRF_TOKEN, cedula : c  },
+                data    :{ _token: CSRF_TOKEN  },
                 success :function(response) {
-                  $("#myModal4 .modal-content").append(response)
-                  $("#myModal4").modal('show');
+                  $("#myModal4 #content_ajax").html(response.html)
+                  $("#myModal4").modal('show'); 
                 },
                 error: function(e) {
+                  console.log("Error:");
                   console.log(e.responseText);
                 }
               });

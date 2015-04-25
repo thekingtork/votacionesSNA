@@ -35,6 +35,7 @@ Route::group(['prefix' => 'administrador', 'namespace' => 'Admin'], function () 
     Route::resource('lideres', 'LiderController');
     Route::resource('puestos', 'PuestoController');
     Route::resource('votantes', 'VotanteController');
+    Route::any('puestos/ajax_edit/{id}', [ 'as' => 'puesto.ajax_edit', 'uses' => 'PuestoController@ajax_edit']);
     
     Route::get('reportes', [ 'as' => 'reportes', 'uses' => 'ReportesController@index']);
     Route::get('reportes/general', [ 'as' => 'reportes', 'uses' => 'ReportesController@general']);
