@@ -51,8 +51,8 @@
 	                                  <td>{{ $dato->tipoUsuario->perfil }}</td>
 	                                  <td>{{ $dato->telefono }}</td>
 	                                  <td>
-                                      <button class="btn btn-warning"><a style = "color:white;" href="{{ route('administrador.users.edit',$dato->id )}}">Editar</a></button>  
-
+                                      <button class="btn btn-warning"><a style = "color:white;" href="{{ route('administrador.users.edit',$dato->id )}}">Editar</a>
+                                      </button>  
                                     </td>
 	                                  <td><button class="btn btn-danger deleted"  data-url="{{ route('administrador.users.destroy', $dato->id ) }}">Eliminar</button></td>
 	                              </tr>

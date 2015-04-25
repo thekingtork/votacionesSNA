@@ -32,17 +32,21 @@
                           <table class="table table-striped table-hover table-bordered" id="editable-sample">
                               <thead>
                               <tr>
-                                  <th>Cedula</th>
-                                  <th>Nombre</th>
-                                  <th>Votar</th>
+                                  <th>Cedula     </th>
+                                  <th>Nombre completo     </th>
+                                  <th>Marcar</th>
                               </tr>
                               </thead>
                               <tbody>
                               	@foreach ($datos as $dato)
 	                              <tr class="">
                                     <td>{{ $dato->cedula }}</td>
-	                                  <td>{{ $dato->getFullName() }}</td>
-	                                  <td><button class="btn btn-danger votar" data-puesto="{{ $dato->puesto->nombre }}" data-mesa="{{ $dato->numero_mesa }}"  data-url="{{ url('administrador/votos/votar', $dato->id ) }}">Votar</button></td>
+	                                  <td>{{ $dato->getFullName2() }}</td>
+	                                  <td>
+                                      <button style="margin: 0 50% 0 50%;" class="btn btn-success btn-xs votar" data-votante = "{{ $dato->getFullName() }}" data-puesto="{{ $dato->puesto->nombre }}" data-mesa="{{ $dato->numero_mesa }}"  data-url="{{ url('administrador/votos/votar', $dato->id ) }}">
+                                        <i class="fa fa-check"></i>  
+                                      </button>
+                                    </td>
 	                              </tr>
                               	@endforeach
                               </tbody>
@@ -53,36 +57,44 @@
               <!-- page end-->
           </section>
 </section>
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Vas a votar</h4>
-                </div>
-                <div class="modal-body">
-                  <div class="col-sm-6"><h4>Puesto de votacion</h4></div> 
-                  <div class="col-sm-6">
-                    <h3>
-                      <span id="n-puesto"></span>
-                    </h3>
-                  </div>
-                  <div class="col-sm-6">
-                    <h4>Mesa:</h4>
-                  </div>
-                  <div class="col-sm-6">
-                    <h3>
-                      <span id="n-mesa"></span>
-                    </h3>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                    {!! Form::open(['method' => 'POST', 'id' => "form-voto" ]) !!}
-                       <button type="submit" class="btn btn-warning">Confirmar</button>
-                    {!! Form::close() !!}
-                </div>
-            </div>
+                          
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Información: Puesto de votación de:  <span id="n-votante"></span></h4>
         </div>
+          <div class="modal-body">
+            <di class="row">
+              <ul>
+                <li>
+                  <div class="col-sm-5"><h4>Puesto de votacion: </h4></div> 
+                    <div class="col-sm-7">
+                        <h4>
+                          <span id="n-puesto"></span>
+                        </h4>
+                    </div>              
+                </li>
+                <li>
+                  <div class="col-sm-6"><h4>Mesa:</h4></div>
+                    <div class="col-sm-6">
+                      <h4>
+                        <span id="n-mesa"></span>
+                      </h4>
+                    </div>
+                </li>
+              </ul>
+              
+            </di>
+          </div>
+        <div class="modal-footer" style="margin-top: 0;">
+            {!! Form::open(['method' => 'POST', 'id' => "form-voto" ]) !!}
+                <button type="submit" class="btn btn-danger">Confirmar</button>
+            {!! Form::close() !!}
+        </div>
+      </div>
+  </div>
 </div>
 @endsection
 @section('script')
@@ -101,6 +113,7 @@
                 $("#form-voto").attr('action', $(this).data('url') );
                 $("#n-mesa").html($(this).data('mesa') );
                 $("#n-puesto").html($(this).data('puesto') );
+                $("#n-votante").html($(this).data('votante') );
                 $("#myModal2").modal('show');
             });
       </script>

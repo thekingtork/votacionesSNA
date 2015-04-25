@@ -17,9 +17,9 @@
                       <div class="adv-table editable-table ">
                           <div class="clearfix">
                               <div class="btn-group">
-                                  <a href="{{ url('/administrador/puestos/create') }}" class="btn btn-primary" type="button">
-                                      Agregar <i class="fa fa-plus"></i>
-                                  </a>
+                                  <button class="btn btn-primary agregar" >
+                                    Agregar <i class="fa fa-plus"></i>
+                                  </button>
                               </div>
                               <div class="btn-group pull-right">
                                   <button class="btn dropdown-toggle" data-toggle="dropdown">Herramientas <i class="fa fa-angle-down"></i>
@@ -35,8 +35,8 @@
                           <table class="table table-striped table-hover table-bordered" id="editable-sample">
                               <thead>
                               <tr>
-                                  <th>nombre</th>
-                                  <th>numero de mesas</th>
+                                  <th>Nombre</th>
+                                  <th>Número de mesas</th>
                                   <th>Editar</th>
                                   <th>Eliminar</th>
                               </tr>
@@ -47,8 +47,8 @@
                                     <td>{{ $dato->nombre }}</td>
 	                                  <td>{{ $dato->numero_de_mesa }}</td>
 	                                  <td>
-                                       <button class="btn btn-warning" style = "text-aling:center;">
-                                          <a style = "color:white;" href="{{ route('administrador.puestos.edit',$dato->id )}}">Editar</a>
+                                       <button class="btn btn-warning editar" style = "text-aling:center;" data-url="{{ route('administrador.puestos.edit',$dato->id )}}">
+                                          Editar
                                        </button> 
                                     </td>
 
@@ -82,6 +82,50 @@
             </div>
         </div>
 </div>
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Agregar puesto de votación</h4>
+                </div>
+                <div class="modal-body">
+                      <div class="panel-body">
+                       @include('admin.partials.messages')
+                      {!! Form::open(['route' => 'administrador.puestos.store', 'method' => 'post']) !!}
+                        @include('admin.puestos.partials.fields')
+                    </div>                  
+                </div>
+                <div class="modal-footer">
+                      <button type="submit" class="btn btn-success">Crear puesto de votacion</button>
+                    {!! Form::close() !!} 
+                    <button data-dismiss="modal" class="btn btn-danger" type="button">Cerrar</button>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Editar puesto de votación</h4>
+                </div>
+                <div class="modal-body">
+                      <div class="panel-body">
+                       @include('admin.partials.messages')
+                      {!! Form::open(['route' => 'administrador.puestos.store', 'method' => 'post']) !!}
+                        @include('admin.puestos.partials.fields')
+                    </div>                  
+                </div>
+                <div class="modal-footer">
+                      <button type="submit" class="btn btn-success">Crear puesto de votacion</button>
+                    {!! Form::close() !!} 
+                    <button data-dismiss="modal" class="btn btn-danger" type="button">Cerrar</button>
+                </div>
+            </div>
+        </div>
+</div>
 @endsection
 @section('script')
 <script type="text/javascript" src="{{ url('/assets/data-tables/jquery.dataTables.js') }}"></script>
@@ -98,6 +142,12 @@
             $(".deleted").click(function (e) {
                 $("#form-delete").attr('action', $(this).data('url') );
                 $("#myModal2").modal('show');
+            });
+            $(".agregar").click(function (e) {
+                $("#myModal3").modal('show');
+            });
+            $(".editar").click(function (e) {
+                $("#myModal4").modal('show');
             });
       </script>
 @endsection

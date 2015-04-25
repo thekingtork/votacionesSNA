@@ -17,7 +17,9 @@
                      @include('admin.partials.messages')
                     {!! Form::model($user,['route' => ['administrador.votantes.update',$user->id], 'method' => 'PUT']) !!}
                       @include('admin.votantes.partials.fields')
-                      <button type="submit" class="btn btn-default">Guardar Cambios</button>
+                      <button type="submit" class="btn btn-success">
+                         <i class="fa fa-save"></i> 
+                        Guardar Cambios</button>
                     {!! Form::close() !!} 
                   </div>
               </section>

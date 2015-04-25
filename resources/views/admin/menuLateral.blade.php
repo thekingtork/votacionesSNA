@@ -31,7 +31,6 @@
       </a>
       <ul class="sub">
         <li><a  href="{{ url('/administrador/puestos') }}">Puestos</a></li>
-        <li><a  href="{{ url('/administrador/puestos/create') }}">Agregar</a></li>
       </ul>
     </li>
     <li class="sub-menu">

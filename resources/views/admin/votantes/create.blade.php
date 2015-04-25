@@ -17,7 +17,8 @@
                      @include('admin.partials.messages')
                     {!! Form::open(['route' => 'administrador.votantes.store', 'method' => 'post']) !!}
                       @include('admin.votantes.partials.fields')
-                      <button type="submit" class="btn btn-default">Crear votante</button>
+                      <button type="submit" class="btn btn-success">
+                         <i class="fa fa-save"></i> Crear votante</button>
                     {!! Form::close() !!} 
                   </div>
               </section>

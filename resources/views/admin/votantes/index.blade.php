@@ -55,7 +55,11 @@
                                     <td>{{ $dato->direccion }}</td>
                                     <td>{{ $dato->lider->getFullName() }}</td>
 	                                  <td>{{ $dato->puesto->nombre }}</td>
-	                                  <td><a href="{{ route('administrador.votantes.edit',$dato->id )}}">Editar</a></td>
+	                                  <td>
+                                    <button class="btn btn-warning">
+                                      <a style = "color:white;" href="{{ route('administrador.votantes.edit',$dato->id )}}">Editar</a>
+                                    </button>
+                                    </td>
 	                                  <td><button class="btn btn-danger deleted"  data-url="{{ route('administrador.votantes.destroy', $dato->id ) }}">Eliminar</button></td>
 	                              </tr>
                               	@endforeach

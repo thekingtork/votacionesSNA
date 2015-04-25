@@ -19,8 +19,12 @@ class Votante extends Model {
         return $this->belongsTo('App\Puesto','puestos_votacion_id');
     }
     public function getFullName()
+    {
+        return $this->primer_nombre . ' ' . $this->primer_apellido;
+    }
+    public function getFullName2()
 	{
-		return $this->primer_nombre . ' ' . $this->primer_apellido;
+		return $this->primer_nombre . ' ' . $this->segundo_nombre. ' ' .$this->primer_apellido . ' ' . $this->segundo_apellido;
 	}
 
 }
