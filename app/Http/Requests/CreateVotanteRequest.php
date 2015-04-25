@@ -22,7 +22,7 @@ class CreateVotanteRequest extends Request {
 	public function rules()
 	{
 		return [
-			'cedula'=> 'required|numeric|max:9999999999|min:1000000|unique:lideres,cedula',
+			'cedula'=> 'required|numeric|max:9999999999|min:1000000|unique:votantes,cedula',
 			'primer_nombre' => 'required|min:3|alpha|max:32', 
 			'segundo_nombre ' => 'max:32|alpha', 
 			'primer_apellido' => 'required|alpha|min:3|max:32',

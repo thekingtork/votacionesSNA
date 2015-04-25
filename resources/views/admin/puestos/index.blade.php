@@ -11,7 +11,7 @@
               <!-- page start-->
               <section class="panel">
                   <header class="panel-heading">
-                      Listado de puestos
+                      Listado: Puestos de votación
                   </header>
                   <div class="panel-body">
                       <div class="adv-table editable-table ">
@@ -46,7 +46,12 @@
 	                              <tr class="">
                                     <td>{{ $dato->nombre }}</td>
 	                                  <td>{{ $dato->numero_de_mesa }}</td>
-	                                  <td><a href="{{ route('administrador.puestos.edit',$dato->id )}}">Editar</a></td>
+	                                  <td>
+                                       <button class="btn btn-warning" style = "text-aling:center;">
+                                          <a style = "color:white;" href="{{ route('administrador.puestos.edit',$dato->id )}}">Editar</a>
+                                       </button> 
+                                    </td>
+
 	                                  <td><button class="btn btn-danger deleted"  data-url="{{ route('administrador.puestos.destroy', $dato->id ) }}">Eliminar</button></td>
 	                              </tr>
                               	@endforeach
