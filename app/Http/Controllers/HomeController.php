@@ -38,7 +38,10 @@ class HomeController extends Controller {
 				break;	
 			case 'lider':
 				$l = Lider::where('email', '=', Auth::user()->email)->first();
-				$data['votantes'] = count($l->votantes);
+				if( $l )
+					$data['votantes'] = count($l->votantes);
+				else
+					$data['votantes'] = "Error";
 				return view('lider', $data);
 				break;
 			case 'votante':

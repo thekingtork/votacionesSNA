@@ -54,3 +54,9 @@
         <li><a  href="{{ url('/administrador/votos/reiniciar') }}">Reiniciar votaciones</a></li>
       </ul>
     </li>
+    <li>
+        <a class="active" href="{{ url('/administrador/reportes') }}">
+            <i class="fa fa-print"></i>
+            <span>Reportes</span>
+        </a>
+    </li>

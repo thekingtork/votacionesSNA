@@ -24,6 +24,9 @@ Route::controllers([
 
 Route::group(['prefix' => 'lider', 'namespace' => 'Lider'], function () {
     Route::resource('votantes', 'VotanteController');
+    Route::get('reportes', [ 'as' => 'reportes', 'uses' => 'ReportesController@index']);
+    Route::get('reportes/general', [ 'as' => 'reportes', 'uses' => 'ReportesController@general']);
+    
 });
 
 Route::group(['prefix' => 'administrador', 'namespace' => 'Admin'], function () {
@@ -32,6 +35,9 @@ Route::group(['prefix' => 'administrador', 'namespace' => 'Admin'], function () 
     Route::resource('lideres', 'LiderController');
     Route::resource('puestos', 'PuestoController');
     Route::resource('votantes', 'VotanteController');
+    
+    Route::get('reportes', [ 'as' => 'reportes', 'uses' => 'ReportesController@index']);
+    Route::get('reportes/general', [ 'as' => 'reportes', 'uses' => 'ReportesController@general']);
 
     Route::get('votos', [ 'as' => 'votos', 'uses' => 'VotosController@index']);
     Route::post('votos/votar/{id}', [ 'as' => 'votar', 'uses' => 'VotosController@votar']);
