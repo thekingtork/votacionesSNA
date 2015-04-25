@@ -74,7 +74,7 @@ class LiderController extends Controller {
 	{
 		$user = Lider::findOrFail($id);
 		return view('admin.lideres.edit',compact('user'));
-	}
+	}z
 
 	/**
 	 * Update the specified resource in storage.

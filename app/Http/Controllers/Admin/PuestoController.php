@@ -76,6 +76,18 @@ class PuestoController extends Controller {
 	}
 
 	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function ajax_edit($id)
+	{
+		$user = Puesto::findOrFail($id);
+		return view('admin.puestos.aja_edit',compact('user'));
+	}
+
+	/**
 	 * Update the specified resource in storage.
 	 *
 	 * @param  int  $id

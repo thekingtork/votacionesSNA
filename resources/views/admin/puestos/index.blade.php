@@ -114,19 +114,9 @@
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title">Editar puesto de votación</h4>
+                    <meta name="csrf-token" content="{{ csrf_token() }}" />
                 </div>
-                <div class="modal-body">
-                      <div class="panel-body">
-                       @include('admin.partials.messages')
-                      {!! Form::open(['route' => 'administrador.puestos.store', 'method' => 'post']) !!}
-                        @include('admin.puestos.partials.fields')
-                    </div>                  
-                </div>
-                <div class="modal-footer">
-                      <button type="submit" class="btn btn-success">Crear puesto de votacion</button>
-                    {!! Form::close() !!} 
-                    <button data-dismiss="modal" class="btn btn-danger" type="button">Cerrar</button>
-                </div>
+                
             </div>
         </div>
 </div>
@@ -151,7 +141,20 @@
                 $("#myModal3").modal('show');
             });
             $(".editar").click(function (e) {
-                $("#myModal4").modal('show');
+              $.ajax({
+                type    :"POST",
+                url     :"{{ url('/votante/consultar') }}",
+                dataType:"json",
+                data    :{ _token: CSRF_TOKEN, cedula : c  },
+                success :function(response) {
+                  $("#myModal4 .modal-content").append(response)
+                  $("#myModal4").modal('show');
+                },
+                error: function(e) {
+                  console.log(e.responseText);
+                }
+              });
+                
             });
       </script>
 @endsection
