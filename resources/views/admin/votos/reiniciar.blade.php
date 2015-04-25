@@ -46,7 +46,7 @@
                   ¿Desea reiniciar todos los sufragos?
                 </div>
                 <div class="modal-footer">
-                    {!! Form::open(['method' => 'POST' ]) !!}
+                    {!! Form::open(['route' => 'administrador.votos.reiniciar','method' => 'POST' ]) !!}
                        <button type="submit" class="btn btn-warning">Confirmar</button>
                     {!! Form::close() !!}
                 </div>

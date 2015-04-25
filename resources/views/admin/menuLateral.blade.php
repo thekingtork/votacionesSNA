@@ -27,7 +27,7 @@
     <li class="sub-menu">
         <a href="javascript:;" >
             <i class="fa fa-laptop"></i>
-        <span>Administrar puestos</span>
+        <span>Administrar Puestos</span>
       </a>
       <ul class="sub">
         <li><a  href="{{ url('/administrador/puestos') }}">Puestos</a></li>
@@ -46,11 +46,10 @@
     <li class="sub-menu">
         <a href="javascript:;" >
             <i class="fa fa-archive"></i>
-        <span>Administrar votación</span>
+        <span>Marcado de Votos</span>
       </a>
       <ul class="sub">
         <li><a  href="{{ url('/administrador/votos') }}">Votaciones</a></li>
-        <li><a  href="{{ url('/administrador/votos/reiniciar') }}">Reiniciar votaciones</a></li>
       </ul>
     </li>
     <li>

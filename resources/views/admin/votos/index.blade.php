@@ -16,7 +16,9 @@
                       <div class="adv-table editable-table ">
                           <div class="clearfix">
                               <div class="btn-group">
-                                  
+                                  <button class="btn btn-danger reiniciar" >
+                                    Reiniciar votación <i class="fa fa-plus"></i>
+                                  </button>
                               </div>
                               <div class="btn-group pull-right">
                                   <button class="btn dropdown-toggle" data-toggle="dropdown">Herramientas <i class="fa fa-angle-down"></i>
@@ -96,6 +98,24 @@
       </div>
   </div>
 </div>
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">¿Reiniciar?</h4>
+                </div>
+                <div class="modal-body">
+                  ¿Desea reiniciar todos los sufragos?
+                </div>
+                <div class="modal-footer">
+                    {!! Form::open(['route' => 'votos.reiniciar','method' => 'POST' ]) !!}
+                       <button type="submit" class="btn btn-warning">Confirmar</button>
+                    {!! Form::close() !!}
+                </div>
+            </div>
+        </div>
+</div>
 @endsection
 @section('script')
 <script type="text/javascript" src="{{ url('/assets/data-tables/jquery.dataTables.js') }}"></script>
@@ -115,6 +135,9 @@
                 $("#n-puesto").html($(this).data('puesto') );
                 $("#n-votante").html($(this).data('votante') );
                 $("#myModal2").modal('show');
+            });
+            $(".reiniciar").click(function (e) {
+                $("#myModal3  ").modal('show');
             });
       </script>
 @endsection
