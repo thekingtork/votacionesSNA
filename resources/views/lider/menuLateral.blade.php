@@ -14,3 +14,9 @@
         <li><a  href="{{ url('/lider/votantes/create') }}">Agregar</a></li>
       </ul>
     </li>
+    <li>
+        <a class="" href="{{ url('/lider/reportes') }}">
+            <i class="fa fa-print"></i>
+            <span>Reportes</span>
+        </a>
+    </li>
