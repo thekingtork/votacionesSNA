@@ -68,16 +68,20 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title">Modal Tittle</h4>
+                    <h4 class="modal-title">Alerta - Eliminar votante</h4>
                 </div>
                 <div class="modal-body">
-                  ¿Seguro que desea eliminar?
+                 <h4>
+                    ¿Esta usted seguro que desea eliminar?
+                 </h4>
                 </div>
                 <div class="modal-footer">
+                  <div class="row">
                     <button data-dismiss="modal" class="btn btn-default" type="button">Cerrar</button>
-                    {!! Form::open(['method' => 'DELETE', 'id' => "form-delete" ]) !!}
-                       <button type="submit" class="btn btn-warning">Confirmar</button>
-                    {!! Form::close() !!}
+                    {!! Form::open(['method' => 'DELETE', 'id' => "form-delete", 'style' => 'display: inline-block;' ]) !!}
+                       <button type="submit" class="btn btn-warning">Aceptar</button>
+                    {!! Form::close() !!}                    
+                  </div>
                 </div>
             </div>
         </div>
