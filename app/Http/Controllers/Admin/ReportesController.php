@@ -11,6 +11,7 @@ use App;
 use Excel;
 use App\Votante;
 use App\Lider;
+use App\Puesto;
 
 class ReportesController extends Controller {
 	public function __construct()
@@ -75,6 +76,17 @@ class ReportesController extends Controller {
 		    })->download('xls');
 
 		});
+	}
+
+	public function proceso_pdf()
+	{
+		$pdf = App::make('dompdf'); //Note: in 0.6.x this will be 'dompdf.wrapper'
+
+		$data['cant_votos'] = Votante::where("sufrago",'=',1)->count();
+		$data['fecha'] 		= date("Y/m/d g:i a");
+		$data['puestos'] 	= Puesto::all();
+		$pdf = $pdf->loadView("admin.reportes.cant_votos", $data);
+		return $pdf->stream();
 	}
 
 

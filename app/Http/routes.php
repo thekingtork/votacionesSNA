@@ -42,6 +42,7 @@ Route::group(['prefix' => 'administrador', 'namespace' => 'Admin'], function () 
     Route::get('reportes/general/excel', [ 'as' => 'reportes', 'uses' => 'ReportesController@general_excel']);
     Route::get('reportes/lista/excel', [ 'as' => 'reportes', 'uses' => 'ReportesController@lista_excel']);
     Route::get('reportes/lista/pdf', [ 'as' => 'reportes', 'uses' => 'ReportesController@lista_pdf']);
+    Route::get('reportes/proceso/pdf', [ 'as' => 'reportes', 'uses' => 'ReportesController@proceso_pdf']);
 
     Route::get('votos', [ 'as' => 'votos', 'uses' => 'VotosController@index']);
     Route::post('votos/votar/{id}', [ 'as' => 'votar', 'uses' => 'VotosController@votar']);
