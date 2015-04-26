@@ -25,8 +25,7 @@ Route::controllers([
 Route::group(['prefix' => 'lider', 'namespace' => 'Lider'], function () {
     Route::resource('votantes', 'VotanteController');
     Route::get('reportes', [ 'as' => 'reportes', 'uses' => 'ReportesController@index']);
-    Route::get('reportes/general/pdf', [ 'as' => 'reportes', 'uses' => 'ReportesController@general_pdf']);
-    Route::get('reportes/general/excel', [ 'as' => 'reportes', 'uses' => 'ReportesController@general_excel']);
+    Route::get('reportes/general', [ 'as' => 'reportes', 'uses' => 'ReportesController@general']);
     
 });
 

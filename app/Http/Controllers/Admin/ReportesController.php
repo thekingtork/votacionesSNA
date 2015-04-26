@@ -60,6 +60,7 @@ class ReportesController extends Controller {
 
 		$data['votantes'] = Votante::all();
 		$pdf = $pdf->loadView("admin.reportes.list", $data);
+		$pdf->setOrientation('landscape');
 		return $pdf->stream();
 	}
 
