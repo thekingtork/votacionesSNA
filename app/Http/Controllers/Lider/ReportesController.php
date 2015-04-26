@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Auth;
 use App;
+use Excel;
 use App\Votante;
 use App\Lider;
 
@@ -28,7 +29,7 @@ class ReportesController extends Controller {
 		return view('lider.reportes.index'); 
 	}
 
-	public function general()
+	public function general_pdf()
 	{
 		$pdf = App::make('dompdf'); //Note: in 0.6.x this will be 'dompdf.wrapper'
 		$l =  Lider::where( 'email', '=', Auth::user()->email)->first();
@@ -36,5 +37,20 @@ class ReportesController extends Controller {
 		$data['votantes'] = $l->votantes;
 		$pdf = $pdf->loadView("lider.reportes.general", $data);
 		return $pdf->stream();
+	}
+
+	public function general_excel()
+	{
+		Excel::create('Reporte', function($excel) {
+
+		    $excel->sheet('general', function($sheet) {
+				$l =  Lider::where( 'email', '=', Auth::user()->email)->first();
+				$data['cantidad_votantes'] = count( $l->votantes );
+				$data['votantes'] = $l->votantes;
+				$sheet->loadView("lider.reportes.general", $data);
+
+		    })->download('xls');
+
+		});
 	}
 }

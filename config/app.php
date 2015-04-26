@@ -146,6 +146,7 @@ return [
 		'App\Providers\RouteServiceProvider',
 		'Collective\Html\HtmlServiceProvider',
 		'Barryvdh\DomPDF\ServiceProvider',
+		'Maatwebsite\Excel\ExcelServiceProvider',
 
 	],
 
@@ -197,6 +198,7 @@ return [
 		'Form' => 'Collective\Html\FormFacade',
       	'Html' => 'Collective\Html\HtmlFacade',
       	'PDF' => 'Barryvdh\DomPDF\Facade',
+      	'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 	],
 
 ];

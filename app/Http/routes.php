@@ -25,7 +25,8 @@ Route::controllers([
 Route::group(['prefix' => 'lider', 'namespace' => 'Lider'], function () {
     Route::resource('votantes', 'VotanteController');
     Route::get('reportes', [ 'as' => 'reportes', 'uses' => 'ReportesController@index']);
-    Route::get('reportes/general', [ 'as' => 'reportes', 'uses' => 'ReportesController@general']);
+    Route::get('reportes/general/pdf', [ 'as' => 'reportes', 'uses' => 'ReportesController@general_pdf']);
+    Route::get('reportes/general/excel', [ 'as' => 'reportes', 'uses' => 'ReportesController@general_excel']);
     
 });
 
@@ -38,7 +39,8 @@ Route::group(['prefix' => 'administrador', 'namespace' => 'Admin'], function () 
     Route::post('puestos/ajax_edit/{id}', [ 'as' => 'puesto.ajax_edit', 'uses' => 'PuestoController@ajax_edit']);
     
     Route::get('reportes', [ 'as' => 'reportes', 'uses' => 'ReportesController@index']);
-    Route::get('reportes/general', [ 'as' => 'reportes', 'uses' => 'ReportesController@general']);
+    Route::get('reportes/general/pdf', [ 'as' => 'reportes', 'uses' => 'ReportesController@general_pdf']);
+    Route::get('reportes/general/excel', [ 'as' => 'reportes', 'uses' => 'ReportesController@general_excel']);
 
     Route::get('votos', [ 'as' => 'votos', 'uses' => 'VotosController@index']);
     Route::post('votos/votar/{id}', [ 'as' => 'votar', 'uses' => 'VotosController@votar']);
