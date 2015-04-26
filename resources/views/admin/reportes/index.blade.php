@@ -33,6 +33,34 @@
                 </a>
             </div>
       </div>
+      <div class="row state-overview">
+            <div class="col-lg-3 col-sm-6">
+                <a href="{{ url('/administrador/reportes/lista/pdf') }}" target="_blank">
+                    <section class="panel">
+                        <div class="symbol red">
+                            <i class="fa fa-file"></i>
+                        </div>
+                        <div class="value">
+                            <p>Lista de Votantes</p>
+                            <h1 class="">PDF</h1>
+                        </div>
+                    </section> 
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <a href="{{ url('/administrador/reportes/lista/excel') }}" target="_blank">
+                    <section class="panel">
+                        <div class="symbol red">
+                            <i class="fa fa-file-text"></i>
+                        </div>
+                        <div class="value">
+                            <p>Lista de Votantes</p>
+                            <h1 class="">EXCEL</h1>
+                        </div>
+                    </section> 
+                </a>
+            </div>
+      </div>
 
 </section>
 </section>

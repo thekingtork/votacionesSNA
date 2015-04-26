@@ -54,5 +54,27 @@ class ReportesController extends Controller {
 		});
 	}
 
+	public function lista_pdf()
+	{
+		$pdf = App::make('dompdf'); //Note: in 0.6.x this will be 'dompdf.wrapper'
+
+		$data['votantes'] = Votante::all();
+		$pdf = $pdf->loadView("admin.reportes.list", $data);
+		return $pdf->stream();
+	}
+
+	public function lista_excel()
+	{
+		Excel::create('Lista de votantes', function($excel) {
+
+		    $excel->sheet('Lista', function($sheet) {
+		    	$data['votantes'] = Votante::all();
+		        $sheet->loadView("admin.reportes.list", $data);
+
+		    })->download('xls');
+
+		});
+	}
+
 
 }
