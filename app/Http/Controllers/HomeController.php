@@ -42,6 +42,7 @@ class HomeController extends Controller {
 					$data['votantes'] = count($l->votantes);
 				else
 					$data['votantes'] = "Error";
+					$data['last_votantes'] = Votante::orderBy('id','DESC')->take(5)->get();
 				return view('lider', $data);
 				break;
 			case 'votante':
