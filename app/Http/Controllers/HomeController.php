@@ -48,6 +48,16 @@ class HomeController extends Controller {
 			case 'votante':
 				return view('votante');
 				break;			
+			case 'super-administrador':
+				$data['usuarios'] = User::count();
+				$data['lideres'] = Lider::count();
+				$data['votantes'] = Votante::count();
+				$data['puestos'] = Puesto::count();
+				$data['last_users'] = User::orderBy('id','DESC')->take(5)->get();
+				$data['last_votantes'] = Votante::orderBy('id','DESC')->take(5)->get();
+				return view('administrador', $data);
+				break;	
+			
 			default:
 				# code...
 				break;

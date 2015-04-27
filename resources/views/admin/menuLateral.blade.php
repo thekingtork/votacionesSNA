@@ -43,6 +43,7 @@
         <li><a  href="{{ url('/administrador/votantes/create') }}">Agregar</a></li>
       </ul>
     </li>
+    
     <li class="sub-menu">
         <a href="javascript:;" >
             <i class="fa fa-archive"></i>
@@ -52,6 +53,7 @@
         <li><a  href="{{ url('/administrador/votos') }}">Votaciones</a></li>
       </ul>
     </li>
+    
     <li>
         <a class="active" href="{{ url('/administrador/reportes') }}">
             <i class="fa fa-print"></i>

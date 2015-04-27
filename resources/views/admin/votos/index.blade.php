@@ -16,9 +16,11 @@
                       <div class="adv-table editable-table ">
                           <div class="clearfix">
                               <div class="btn-group">
+                                @if( Auth::user()->tipoUsuario->perfil == "super-administrador" )
                                   <button class="btn btn-danger reiniciar" >
                                     Reiniciar votación <i class="fa fa-plus"></i>
                                   </button>
+                                @endif
                               </div>
                               <div class="btn-group pull-right">
                                   <button class="btn dropdown-toggle" data-toggle="dropdown">Herramientas <i class="fa fa-angle-down"></i>
@@ -98,6 +100,7 @@
       </div>
   </div>
 </div>
+@if( Auth::user()->tipoUsuario->perfil == "super-administrador" )
 <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -116,6 +119,7 @@
             </div>
         </div>
 </div>
+@endif
 @endsection
 @section('script')
 <script type="text/javascript" src="{{ url('/assets/data-tables/jquery.dataTables.js') }}"></script>
@@ -136,8 +140,10 @@
                 $("#n-votante").html($(this).data('votante') );
                 $("#myModal2").modal('show');
             });
+            @if( Auth::user()->tipoUsuario->perfil == "super-administrador" )
             $(".reiniciar").click(function (e) {
                 $("#myModal3  ").modal('show');
             });
+            @endif
       </script>
 @endsection

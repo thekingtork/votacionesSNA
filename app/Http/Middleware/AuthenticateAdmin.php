@@ -32,7 +32,7 @@ class AuthenticateAdmin {
 	 */
 	public function handle($request, Closure $next)
 	{
-		if ($this->auth->user()->tipoUsuario->perfil != "administrador" )
+		if ($this->auth->user()->tipoUsuario->perfil != "administrador" && $this->auth->user()->tipoUsuario->perfil != "super-administrador" )
 		{
 			if ($request->ajax())
 			{

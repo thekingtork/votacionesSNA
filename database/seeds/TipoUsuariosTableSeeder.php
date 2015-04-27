@@ -6,7 +6,7 @@ class TipoUsuariosTableSeeder extends Seeder {
 
     public function run()
     {
-        $id = \DB::table('tipo_usuarios')->insertGetId(array(
+        $id = \DB::table('tipo_usuarios')->insert(array(
             'perfil' => 'administrador'
         ));
         \DB::table('tipo_usuarios')->insert(array(
@@ -15,7 +15,7 @@ class TipoUsuariosTableSeeder extends Seeder {
         \DB::table('tipo_usuarios')->insert(array(
             'perfil' => 'votante'
         ));
-        \DB::table('tipo_usuarios')->insert(array(
+        $id = \DB::table('tipo_usuarios')->insertGetId(array(
             'perfil' => 'super-administrador'
         ));
 
