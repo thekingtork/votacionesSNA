@@ -164,7 +164,40 @@
                   </table>
               </div>
         </section>
-      </div> 
+      </div>
+      <div class="col-lg-4">
+        <section class="panel">
+          <header class="panel-heading yellow">
+            <span style="color:white;">Sectores</span>             
+            <span class="tools pull-right">
+                <a class="fa fa-chevron-down" href="javascript:;"></a>
+                <a class="fa fa-times" href="javascript:;"></a>
+            </span>
+            </header>
+              <div class="panel-body">
+                <div class="row col-lg-12">
+                <section id="unseen">
+                  <table class="table table-hover">
+                              <thead>
+                              <tr>
+                                  <th>Sector</th>
+                                  <th>Cantidad de votantes</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                                @foreach($sectores as $key => $user)
+                              <tr>
+                                  <td>{{ $key }}</td>
+                                  <td>{{ $user }}</td>
+                              </tr>
+                              @endforeach
+                              </tbody>
+                  </table>
+                </section>
+                </div>
+              </div>
+        </section>
+      </div>  
     </div>
 </section>
 @endsection

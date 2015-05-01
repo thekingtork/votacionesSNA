@@ -30,6 +30,17 @@ class HomeController extends Controller {
 		switch ($dato) {
 			case 'administrador':
 				$data['mejor_lider']		= Votante::selectRaw('lider_id, count(*) AS count')->orderBy('count','DESC')->groupBy('lider_id')->take(5)->get();
+				$sectores					= Lider::groupBy('sector')->get();
+				foreach ($sectores as $sector) 
+				{
+					$ls 	= Lider::where('sector','=',$sector->sector)->get();
+					$cant 		= 0;
+					foreach ($ls as  $l) {
+						$cant +=  count($l->votantes);
+					}
+					$data['sectores'][$sector->sector] = $cant;
+				}
+				
 				$data['usuarios'] 		= User::count();
 				$data['lideres'] 		= Lider::count();
 				$data['votantes'] 		= Votante::count();
@@ -53,8 +64,18 @@ class HomeController extends Controller {
 			case 'super-administrador':
 				
 				$data['mejor_lider']		= Votante::selectRaw('lider_id, count(*) AS count')->orderBy('count','DESC')->groupBy('lider_id')->take(5)->get();
-				$data['sectores']			= Lider::selectRaw('sector, count(*) AS count')->orderBy('count','DESC')->groupBy('sector')->take(5)->get();
-				
+				$sectores					= Lider::groupBy('sector')->get();
+				foreach ($sectores as $sector) 
+				{
+					$ls 	= Lider::where('sector','=',$sector->sector)->get();
+					$cant 		= 0;
+					foreach ($ls as  $l) {
+						$cant +=  count($l->votantes);
+					}
+					$data['sectores'][$sector->sector] = $cant;
+				}
+				arsort( $data['sectores'] );
+				$data['sectores'] 			=  array_slice($data['sectores'], 0, 5);
 				$data['usuarios'] 			= User::count();
 				$data['lideres'] 			= Lider::count();
 				$data['votantes'] 			= Votante::count();
