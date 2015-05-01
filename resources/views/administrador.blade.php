@@ -60,45 +60,38 @@
     </div>
     <div class="row state-overview">
       <div class="col-lg-4">
-          <section class="panel">
-            <div class="twt-feed blue-bg">
-                <h1>Sandra Nieto A. </h1>
-                <p>sna@snaconcejo.com.co</p>
-                <a href="#">
-                  <img src="img/profile-avatar.jpg" alt="">
-                </a>
-            </div>
-            <div class="weather-category twt-category">
-              <ul>
-                  <li class="active">
-                      <h5>320</h5>
-                      Tweet
-                  </li>
-                  <li>
-                    <h5>1245</h5>
-                    Siguiendo
-                  </li>
-                  <li>
-                      <h5>24657</h5>
-                        Seguidores
-                  </li>
-              </ul>
-            </div>
-            <div class="twt-write col-sm-12">
-                <textarea class="form-control  t-text-area" rows="2" placeholder="Tweet Here"></textarea>
-            </div>
-            <footer class="twt-footer">
-                <button class="btn btn-space btn-white" data-toggle="button">
-                    <i class="fa fa-map-marker"></i>
-                </button>
-                <button class="btn btn-space btn-white" data-toggle="button">
-                    <i class="fa fa-camera"></i>
-                </button>
-                <button class="btn btn-space btn-info pull-right" type="button">
-                    <i class="fa fa-twitter"></i>
-                    Tweet
-                </button>
-            </footer>
+        <section class="panel">
+          <header class="panel-heading yellow">
+            <span style="color:white;">Lideres</span>             
+            <span class="tools pull-right">
+                <a class="fa fa-chevron-down" href="javascript:;"></a>
+                <a class="fa fa-times" href="javascript:;"></a>
+            </span>
+            </header>
+              <div class="panel-body">
+                <div class="row col-lg-12">
+                <section id="unseen">
+                  <table class="table table-hover">
+                              <thead>
+                              <tr>
+                                  <th>#</th>
+                                  <th>Primer Nombre</th>
+                                  <th>Cantidad de votantes</th> 
+                              </tr>
+                              </thead>
+                              <tbody>
+                                @foreach($mejor_lider as $key => $user)
+                              <tr>
+                                  <td>{{ $key + 1 }}</td>
+                                  <td>{{ $user->lider->getFullName() }}</td>
+                                  <td>{{ $user->count }}</td>
+                              </tr>
+                              @endforeach
+                              </tbody>
+                  </table>
+                </section>
+                </div>
+              </div>
         </section>
       </div> 
       <div class="col-lg-4">

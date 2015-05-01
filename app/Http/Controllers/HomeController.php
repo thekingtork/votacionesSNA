@@ -5,6 +5,7 @@ use App\Votante;
 use App\Puesto;
 use App\TipoUsuario;
 use Auth;
+use DB;
 use Illuminate\Contracts\Auth\Authenticatable;
 class HomeController extends Controller {
 
@@ -28,12 +29,13 @@ class HomeController extends Controller {
 		$dato = $user->tipoUsuario->perfil;
 		switch ($dato) {
 			case 'administrador':
-				$data['usuarios'] = User::count();
-				$data['lideres'] = Lider::count();
-				$data['votantes'] = Votante::count();
-				$data['puestos'] = Puesto::count();
-				$data['last_users'] = User::orderBy('id','DESC')->take(5)->get();
-				$data['last_votantes'] = Votante::orderBy('id','DESC')->take(5)->get();
+				$data['mejor_lider'] 	= DB::table('lideres')->join('votantes', 'lideres.id', '=', 'votantes.lider_id')->orderBy(DB::raw('count(*)', 'DESC'))->groupBy('lideres.id')->take(5)->get();
+				$data['usuarios'] 		= User::count();
+				$data['lideres'] 		= Lider::count();
+				$data['votantes'] 		= Votante::count();
+				$data['puestos'] 		= Puesto::count();
+				$data['last_users'] 	= User::orderBy('id','DESC')->take(5)->get();
+				$data['last_votantes'] 	= Votante::orderBy('id','DESC')->take(5)->get();
 				return view('administrador', $data);
 				break;	
 			case 'lider':
@@ -49,12 +51,15 @@ class HomeController extends Controller {
 				return view('votante');
 				break;			
 			case 'super-administrador':
-				$data['usuarios'] = User::count();
-				$data['lideres'] = Lider::count();
-				$data['votantes'] = Votante::count();
-				$data['puestos'] = Puesto::count();
-				$data['last_users'] = User::orderBy('id','DESC')->take(5)->get();
-				$data['last_votantes'] = Votante::orderBy('id','DESC')->take(5)->get();
+				
+				$data['mejor_lider']		= Votante::selectRaw('lider_id, count(*) AS count')->orderBy('count','DESC')->groupBy('lider_id')->take(5)->get();
+				
+				$data['usuarios'] 			= User::count();
+				$data['lideres'] 			= Lider::count();
+				$data['votantes'] 			= Votante::count();
+				$data['puestos'] 			= Puesto::count();
+				$data['last_users'] 		= User::orderBy('id','DESC')->take(5)->get();
+				$data['last_votantes'] 		= Votante::orderBy('id','DESC')->take(5)->get();
 				return view('administrador', $data);
 				break;	
 			

@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Lider;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\EditUserRequest;	
 use Illuminate\Http\Request;
@@ -47,9 +48,27 @@ class UserController extends Controller {
 	 */
 	public function store(CreateUserRequest $request)
 	{
-		$user = new User($request->all());
-		$user->save();
-		return redirect()->route('administrador.users.index');
+		$email = $request->get('email');
+		$tipo_user = $request->get('tipo_usuario_id');
+		if( $tipo_user == 2 )
+		{
+			$accion = Lider::where('email','=',$email)->count();
+		}
+		else
+		{
+			$accion = 1;
+		}
+
+		if( $accion > 0 )
+		{
+			$user = new User($request->all());
+			$user->save();
+			return redirect()->route('administrador.users.index');	
+		}
+		else
+		{
+			return redirect()->back()->withErrors(array('Debes crear el perfil del lider primero.'));
+		}
 	}
 
 	/**
