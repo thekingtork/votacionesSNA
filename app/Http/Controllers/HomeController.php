@@ -29,7 +29,7 @@ class HomeController extends Controller {
 		$dato = $user->tipoUsuario->perfil;
 		switch ($dato) {
 			case 'administrador':
-				$data['mejor_lider'] 	= DB::table('lideres')->join('votantes', 'lideres.id', '=', 'votantes.lider_id')->orderBy(DB::raw('count(*)', 'DESC'))->groupBy('lideres.id')->take(5)->get();
+				$data['mejor_lider']		= Votante::selectRaw('lider_id, count(*) AS count')->orderBy('count','DESC')->groupBy('lider_id')->take(5)->get();
 				$data['usuarios'] 		= User::count();
 				$data['lideres'] 		= Lider::count();
 				$data['votantes'] 		= Votante::count();
@@ -53,6 +53,7 @@ class HomeController extends Controller {
 			case 'super-administrador':
 				
 				$data['mejor_lider']		= Votante::selectRaw('lider_id, count(*) AS count')->orderBy('count','DESC')->groupBy('lider_id')->take(5)->get();
+				$data['sectores']			= Lider::selectRaw('sector, count(*) AS count')->orderBy('count','DESC')->groupBy('sector')->take(5)->get();
 				
 				$data['usuarios'] 			= User::count();
 				$data['lideres'] 			= Lider::count();
