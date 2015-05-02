@@ -62,7 +62,7 @@
         </div>
     </div>
     <div class="row state-overview">
-        <div class="col-lg-8 panel" >
+        <div class="col-lg-8 col-sm-12 panel" >
             <div class="panel-heading">Cantidad de votantes por sector</div>
             <div class="panel-body">
                 
@@ -71,7 +71,7 @@
                 </figure>
             </div>
         </div>
-      <div class="col-lg-4">
+      <div class="col-lg-4 col-sm-6">
         <section class="panel">
           <header class="panel-heading yellow">
             <span style="color:white;">Lideres</span>             
@@ -108,7 +108,7 @@
       </div> 
     </div>
     <div class="row state-overview">
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-sm-12">
             <section class="panel">
               <header class="panel-heading terques">
               <span style="color:white;">Ultimos Votantes</span>
@@ -142,7 +142,7 @@
                   </div>
             </section>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6 col-sm-12">
         <section class="panel">
           <header class="panel-heading red">
             <span style="color:white;">Ultimos usuarios</span>             
