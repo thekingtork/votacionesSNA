@@ -63,7 +63,7 @@
     </div>
     <div class="row state-overview">
         <div class="col-lg-8 panel" >
-            <div class="panel-heading">Sectores</div>
+            <div class="panel-heading">Cantidad de votantes por sector</div>
             <div class="panel-body">
                 
                 <figure class="demo-xchart" id="example" style="height: 400px;">
