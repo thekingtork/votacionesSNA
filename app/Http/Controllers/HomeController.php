@@ -40,7 +40,8 @@ class HomeController extends Controller {
 					}
 					$data['sectores'][$sector->sector] = $cant;
 				}
-				
+				arsort( $data['sectores'] );
+				$data['sectores'] 			=  array_slice($data['sectores'], 0, 5);
 				$data['usuarios'] 		= User::count();
 				$data['lideres'] 		= Lider::count();
 				$data['votantes'] 		= Votante::count();

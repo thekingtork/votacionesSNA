@@ -30,6 +30,7 @@
             </tr>
         </tbody>
     </table>
+    @if( count($lider->votantes) > 0 )
     <table style="text-align:center;width:90%;padding-left:100px;padding-top:50px;">
         <thead style="border-bottom: 2px solid #000;background:rgb(247,201,10)">
             <tr>
@@ -58,5 +59,10 @@
             @endforeach
         </tbody>
     </table>
+    @else
+    <div style="text-align:center;width:90%;padding-left:100px;padding-top:50px;">
+        <h2>Sin votantes registrados.</h2>
+    </div>
+    @endif
 </body>
 </html>
