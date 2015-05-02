@@ -2,6 +2,9 @@
 @section('menuLateral')
 	@include('admin.menuLateral')
 @endsection
+@section('estilos')
+<link href="{{ asset('assets/xchart/xcharts.css')}}" rel="stylesheet">
+@endsection
 @section('content')
 <section class="wrapper">
     <div class="row state-overview">
@@ -59,6 +62,15 @@
         </div>
     </div>
     <div class="row state-overview">
+        <div class="col-lg-8 panel" >
+            <div class="panel-heading">Sectores</div>
+            <div class="panel-body">
+                
+                <figure class="demo-xchart" id="example" style="height: 400px;">
+                    
+                </figure>
+            </div>
+        </div>
       <div class="col-lg-4">
         <section class="panel">
           <header class="panel-heading yellow">
@@ -94,7 +106,43 @@
               </div>
         </section>
       </div> 
-      <div class="col-lg-4">
+    </div>
+    <div class="row state-overview">
+        <div class="col-lg-6">
+            <section class="panel">
+              <header class="panel-heading terques">
+              <span style="color:white;">Ultimos Votantes</span>
+                 
+                <span class="tools pull-right">
+                    <a class="fa fa-chevron-down" href="javascript:;"></a>
+                    <a class="fa fa-times" href="javascript:;"></a>
+                </span>
+                </header>
+                  <div class="panel-body">
+                    <table class="table table-hover">
+                                  <thead>
+                                  <tr>
+                                      <th>#</th>
+                                      <th>Nombre</th>
+                                      <th>Lider</th>
+                                      <th>Puesto de votación</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody>
+                                  <tr>
+                                  @foreach($last_votantes as $key => $v)
+                                      <td>{{ $key + 1 }}</td>
+                                      <td>{{ $v->getFullName() }}</td>
+                                      <td>{{ $v->lider->getFullName() }}</td>
+                                      <td>{{ $v->puesto->nombre }}</td>
+                                  </tr>
+                                  @endforeach
+                                  </tbody>
+                      </table>
+                  </div>
+            </section>
+        </div>
+        <div class="col-lg-6">
         <section class="panel">
           <header class="panel-heading red">
             <span style="color:white;">Ultimos usuarios</span>             
@@ -131,97 +179,37 @@
               </div>
         </section>
       </div>
-      <div class="col-lg-4">
-        <section class="panel">
-          <header class="panel-heading terques">
-          <span style="color:white;">Ultimos Votantes</span>
-             
-            <span class="tools pull-right">
-                <a class="fa fa-chevron-down" href="javascript:;"></a>
-                <a class="fa fa-times" href="javascript:;"></a>
-            </span>
-            </header>
-              <div class="panel-body">
-                <table class="table table-hover">
-                              <thead>
-                              <tr>
-                                  <th>#</th>
-                                  <th>Nombre</th>
-                                  <th>Lider</th>
-                                  <th>Puesto de votación</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <tr>
-                              @foreach($last_votantes as $key => $v)
-                                  <td>{{ $key + 1 }}</td>
-                                  <td>{{ $v->getFullName() }}</td>
-                                  <td>{{ $v->lider->getFullName() }}</td>
-                                  <td>{{ $v->puesto->nombre }}</td>
-                              </tr>
-                              @endforeach
-                              </tbody>
-                  </table>
-              </div>
-        </section>
-      </div>
-      <div class="col-lg-4">
-        <section class="panel">
-          <header class="panel-heading yellow">
-            <span style="color:white;">Sectores</span>             
-            <span class="tools pull-right">
-                <a class="fa fa-chevron-down" href="javascript:;"></a>
-                <a class="fa fa-times" href="javascript:;"></a>
-            </span>
-            </header>
-              <div class="panel-body">
-                <div class="row col-lg-12">
-                <section id="unseen">
-                  <table class="table table-hover">
-                              <thead>
-                              <tr>
-                                  <th>Sector</th>
-                                  <th>Cantidad de votantes</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                                @foreach($sectores as $key => $user)
-                              <tr>
-                                  <td>{{ $key }}</td>
-                                  <td>{{ $user }}</td>
-                              </tr>
-                              @endforeach
-                              </tbody>
-                  </table>
-                </section>
-                </div>
-              </div>
-        </section>
-      </div>  
     </div>
 </section>
 @endsection
 @section('script')
-  <script src="{{ asset('/js/sparkline-chart.js') }}"></script>
-  <script src="{{ asset('/js/easy-pie-chart.js') }}"></script>
   <script src="{{ asset('/js/count.js') }}"></script>
-  <script>
-      $(document).ready(function() {
-          $("#owl-demo").owlCarousel({
-              navigation : true,
-              slideSpeed : 300,
-              paginationSpeed : 400,
-              singleItem : true,
-        autoPlay:true
 
-          });
-      });
-      $(function(){
-          $('select.styled').customSelect();
-      });
+    <script src="{{ asset('assets/xchart/d3.v3.min.js')}}"></script>
+    <script src="{{ asset('assets/xchart/xcharts.min.js')}}"></script>
+  <script>
       countUp({{ $lideres }},".count");
       countUp({{ $usuarios }},".count2");
       countUp({{ $votantes }},".count3");
       countUp({{ $votantes }},".count4");
+      var data = {
+          "xScale": "ordinal",
+          "yScale": "linear",
+          "main": [
+            {
+              "className": ".pizza",
+              "data": [
+                @foreach($sectores as $key => $sector)
+                {
+                      "x": "{{ $key }}",
+                      "y": {{ $sector }}
+                                  
+                },
+                @endforeach
+              ]
+            }
+          ]
+        };
+        var myChart = new xChart('bar', data, '#example');
   </script>
 @endsection
