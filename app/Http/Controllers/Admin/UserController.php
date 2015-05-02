@@ -28,7 +28,7 @@ class UserController extends Controller {
 	public function index()
 	{
 		$datos = User::all();
-		return view('admin.usuarios.index', compact('datos'));
+		return view('admin.usuarios.index', compact('datos'))->with('p','users');
 	}
 
 	/**
@@ -38,7 +38,7 @@ class UserController extends Controller {
 	 */
 	public function create()
 	{
-		return view('admin.usuarios.create');
+		return view('admin.usuarios.create')->with('p','users');
 	}
 
 	/**
@@ -67,7 +67,7 @@ class UserController extends Controller {
 		}
 		else
 		{
-			return redirect()->back()->withErrors(array('Debes crear el perfil del lider primero.'));
+			return redirect()->back()->withErrors(array('Debes crear el perfil del lider primero.'))->with('p','users');
 		}
 	}
 
@@ -90,7 +90,7 @@ class UserController extends Controller {
 	public function edit($id)
 	{
 		$user = User::findOrFail($id);
-		return view('admin.usuarios.edit',compact('user'));
+		return view('admin.usuarios.edit',compact('user'))->with('p','users');
 	}
 
 	/**

@@ -30,7 +30,7 @@ class LiderController extends Controller {
 	public function index()
 	{
 		$datos = Lider::all();
-		return view('admin.lideres.index', compact('datos')); 
+		return view('admin.lideres.index', compact('datos'))->with('p','lider'); 
 	}
 
 	/**
@@ -40,7 +40,7 @@ class LiderController extends Controller {
 	 */
 	public function create()
 	{
-		return view('admin.lideres.create');
+		return view('admin.lideres.create')->with('p','lider');
 	}
 
 	/**
@@ -52,7 +52,7 @@ class LiderController extends Controller {
 	{
 		$user = new Lider($request->all());
 		$user->save();
-		return redirect()->route('administrador.lideres.index');
+		return redirect()->route('administrador.lideres.index')->with('p','lider');
 	}
 
 	/**
@@ -74,7 +74,7 @@ class LiderController extends Controller {
 	public function edit($id)
 	{
 		$user = Lider::findOrFail($id);
-		return view('admin.lideres.edit',compact('user'));
+		return view('admin.lideres.edit',compact('user'))->with('p','lider');
 	}
 
 	/**

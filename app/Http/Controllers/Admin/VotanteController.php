@@ -30,7 +30,7 @@ class VotanteController extends Controller {
 	public function index()
 	{
 		$datos = Votante::all();
-		return view('admin.votantes.index', compact('datos')); 
+		return view('admin.votantes.index', compact('datos'))->with('p','votantes'); 
 	}
 
 	/**
@@ -47,7 +47,7 @@ class VotanteController extends Controller {
 			$data['lideres'][$key]->name = $value->getFullName();
 		}
 
-		return view('admin.votantes.create', $data);
+		return view('admin.votantes.create', $data)->with('p','votantes');
 	}
 
 	/**
@@ -59,7 +59,7 @@ class VotanteController extends Controller {
 	{
 		$user = new Votante($request->all());
 		$user->save();
-		return redirect()->route('administrador.votantes.index');
+		return redirect()->route('administrador.votantes.index')->with('p','votantes');
 	}
 
 	/**
@@ -88,7 +88,7 @@ class VotanteController extends Controller {
 			$data['lideres'][$key]->name = $value->getFullName();
 		}
 
-		return view('admin.votantes.edit',compact('user'))->with('lideres',$data['lideres'])->with('puestos',$data['puestos']);
+		return view('admin.votantes.edit',compact('user'))->with('lideres',$data['lideres'])->with('puestos',$data['puestos'])->with('p','votantes');
 	}
 
 	/**

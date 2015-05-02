@@ -26,7 +26,8 @@ class HomeController extends Controller {
 	 */
 	public function index(Authenticatable $user)
 	{
-		$dato = $user->tipoUsuario->perfil;
+		$dato 		= $user->tipoUsuario->perfil;
+		$data['p'] 	= "escritorio";
 		switch ($dato) {
 			case 'administrador':
 				$data['mejor_lider']		= Votante::selectRaw('lider_id, count(*) AS count')->orderBy('count','DESC')->groupBy('lider_id')->take(5)->get();

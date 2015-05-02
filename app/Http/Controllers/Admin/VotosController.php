@@ -27,7 +27,7 @@ class VotosController extends Controller {
 	public function index()
 	{
 		$datos = Votante::where("sufrago",'=',0)->get();
-		return view('admin.votos.index', compact('datos')); 
+		return view('admin.votos.index', compact('datos'))->with('p','votos'); 
 	}
 
 	/**
@@ -52,7 +52,7 @@ class VotosController extends Controller {
 	 */
 	public function reiniciar()
 	{
-		return view('admin.votos.reiniciar'); 
+		return view('admin.votos.reiniciar')->with('p','votos'); 
 	}
 
 

@@ -29,7 +29,7 @@ class PuestoController extends Controller {
 	public function index()
 	{
 		$datos = Puesto::all();
-		return view('admin.puestos.index', compact('datos')); 
+		return view('admin.puestos.index', compact('datos'))->with('p','puestos'); 
 	}
 
 	/**
@@ -39,7 +39,7 @@ class PuestoController extends Controller {
 	 */
 	public function create()
 	{
-		return view('admin.puestos.create');
+		return view('admin.puestos.create')->with('p','puestos');
 	}
 
 	/**
@@ -51,7 +51,7 @@ class PuestoController extends Controller {
 	{
 		$user = new Puesto($request->all());
 		$user->save();
-		return redirect()->route('administrador.puestos.index');
+		return redirect()->route('administrador.puestos.index')->with('p','puestos');
 	}
 
 	/**
@@ -73,7 +73,7 @@ class PuestoController extends Controller {
 	public function edit($id)
 	{
 		$user = Puesto::findOrFail($id);
-		return view('admin.puestos.edit',compact('user'));
+		return view('admin.puestos.edit',compact('user'))->with('p','puestos');
 	}
 
 	/**
