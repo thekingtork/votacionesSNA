@@ -67,7 +67,7 @@ class UserController extends Controller {
 		}
 		else
 		{
-			return redirect()->back()->withErrors(array('Debes crear el perfil del lider primero.'))->with('p','users');
+			return redirect()->back()->withErrors(array('Debes crear el lider primero.'))->with('p','users');
 		}
 	}
 
