@@ -8,7 +8,7 @@
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Votaciones SNAC</title>
+    <title>Votaciones Ingrid Pestana</title>
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('/css/bootstrap-reset.css') }}" rel="stylesheet">
@@ -33,7 +33,7 @@
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
               </div>
             <!--logo start-->
-            <a href="{{ url('/') }}" class="logo">Votaciones<span> SNAC</span></a>
+            <a href="{{ url('/') }}" class="logo">Votaciones<span> Ingrid Pestana</span></a>
             <!--logo end-->
             <div class="top-nav ">
                 <!--search & user info start-->

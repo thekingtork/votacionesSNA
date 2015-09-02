@@ -9,7 +9,7 @@
 <section class="wrapper site-min-height">
               <!-- page start-->
               <section class="panel">
-                  <header class="panel-heading">
+                  <header class="panel-heading"><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
                       Listado de votantes
                   </header>
                   <div class="panel-body">
@@ -34,7 +34,7 @@
                           <table class="table table-striped table-hover table-bordered" id="editable-sample">
                               <thead>
                               <tr>
-                                  <th>Correo</th>
+                                  <th>Cedula</th>
                                   <th>Nombre</th>
                                   <th>Telefono</th>
                                   <th>Sexo</th>
@@ -48,7 +48,7 @@
                               <tbody>
                               	@foreach ($datos as $dato)
 	                              <tr class="">
-	                                  <td>{{ $dato->email }}</td>
+	                                  <td>{{ $dato->cedula}}</td>
                                     <td>{{ $dato->getFullName() }}</td>
                                     <td>{{ $dato->telefono }}</td>
                                     <td>{{ $dato->sexo }}</td>

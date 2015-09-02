@@ -1,6 +1,6 @@
 function countUp(count,clase)
 {
-    var div_by = 100,
+    var div_by = 10,
         speed = Math.round(count / div_by),
         $display = $(clase),
         run_count = 1,

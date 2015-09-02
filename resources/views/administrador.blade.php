@@ -73,7 +73,7 @@
         </div>
       <div class="col-lg-4 col-sm-6">
         <section class="panel">
-          <header class="panel-heading yellow">
+          <header class="panel-heading yellow"><meta http-equiv="Content-Type" content="text/html; charset=gb18030">
             <span style="color:white;">Lideres</span>             
             <span class="tools pull-right">
                 <a class="fa fa-chevron-down" href="javascript:;"></a>
@@ -184,14 +184,21 @@
 @endsection
 @section('script')
   <script src="{{ asset('/js/count.js') }}"></script>
-
-    <script src="{{ asset('assets/xchart/d3.v3.min.js')}}"></script>
+  <script src="{{ asset('assets/xchart/d3.v3.min.js')}}"></script>
     <script src="{{ asset('assets/xchart/xcharts.min.js')}}"></script>
   <script>
-      countUp({{ $lideres }},".count");
       countUp({{ $usuarios }},".count2");
+      countUp({{ $lideres }},".count");
       countUp({{ $votantes }},".count3");
-      countUp({{ $votantes }},".count4");
+      countUp({{ $puestos}},".count4");
+      console.log({{ $usuarios }});
+      console.log({{ $lideres }});
+      console.log({{ $votantes }});
+      console.log({{ $puestos }});
+       @foreach($sectores as $key => $sector)
+        console.log({{ $sector }})                                  
+        @endforeach
+
       var data = {
           "xScale": "ordinal",
           "yScale": "linear",
@@ -203,7 +210,6 @@
                 {
                       "x": "{{ $key }}",
                       "y": {{ $sector }}
-                                  
                 },
                 @endforeach
               ]
